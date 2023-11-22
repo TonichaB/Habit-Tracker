@@ -16,12 +16,7 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('habit_tracker')
 
 # Start Screen
-print(r '''
-  _   _   _   _   _     _   _   _   _   _   _   _  
- / \ / \ / \ / \ / \   / \ / \ / \ / \ / \ / \ / \ 
-( H | a | b | i | t ) ( T | r | a | c | k | e | r )
- \_/ \_/ \_/ \_/ \_/   \_/ \_/ \_/ \_/ \_/ \_/ \_/ 
-''')
+print("Habit Tracker")
 print("Please press enter to start...")
 
 
