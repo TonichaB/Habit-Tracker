@@ -119,7 +119,7 @@ def register(stdscr):
     username_column = credentials_worksheet.col_values(1)
 
     if new_user in username_column:
-        stdscr.addstr(2, 0, "The username already exists. Please choose a different one.")
+        stdscr.addstr(2, 0, "The username already exists. Please try again.")
     else:
 
         # Add the new user's credentials to the next available row.
@@ -132,6 +132,7 @@ def register(stdscr):
     stdscr.refresh()
     stdscr.getch()
 
+
 def startup(stdscr):
     options = ["Login", "Register"]
     selected_option_index = 0
@@ -141,7 +142,11 @@ def startup(stdscr):
         stdscr.addstr(0, 0, "\nPlease select an option:")
 
         for i, option in enumerate(options):
-            stdscr.addstr(i + 1, 0, f"{'>> ' if i == selected_option_index else '   '}{option}")
+            stdscr.addstr(
+                i + 1,
+                0,
+                f"{'>> ' if i == selected_option_index else '   '}{option}"
+            )
 
         key = stdscr.getch()
 
@@ -161,4 +166,3 @@ def startup(stdscr):
 
 if __name__ == "__main__":
     curses.wrapper(startup)
-
