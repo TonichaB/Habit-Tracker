@@ -23,11 +23,15 @@ print("Please press enter to start...")
 def login():
     # log in function will go here
     print("You have selected Log In")
+    username = input("Please confirm your username:")
+    password = input("Please confirm your password:")
 
 
 def register():
     # register function will go here
     print("You have selected Register")
+    new_user = input("Please choose your username:")
+    new_password = input("Please choose your password:")
 
 
 def startup():
@@ -43,6 +47,7 @@ def startup():
 
         key = keyboard.read_event(suppress=True).name
 
+        # Gives the user the ability to use arrow keys to select an option
         if key == "down" and selected_option_index < len(options) - 1:
             selected_option_index += 1
         elif key == "up" and selected_option_index > 0:
@@ -53,6 +58,19 @@ def startup():
             elif options[selected_option_index] == "Register":
                 register()
 
+def verify_user:
+    #verify the users entries for login
+    username_column = worksheet.col_values(1)
+    password_column = worksheet.col_values(2)
+    
+    if username in username_column:
+        index = username_column.index(username)
+        stored_password = password_column[index]
+
+        if stored_password == password:
+            return True
+
+    return False
 
 if __name__ == "__main__":
     startup()
