@@ -1,8 +1,8 @@
 import gspread
 from google.oauth2.service_account import Credentials
-import keyboard
+import curses
 
-# List of API's requiring access
+# List of APIs requiring access
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
@@ -22,11 +22,41 @@ print("Habit Tracker")
 print("Please press enter to start...")
 
 
-def login():
+def login(stdscr):
+    stdscr.clear()
+    stdscr.addstr(0, 0, "You have selected Log In")
+    stdscr.refresh()
 
-    print("You have selected Log In")
-    username = input("Please confirm your username: ")
-    password = input("Please confirm your password: ")
+    username = ""
+    password = ""
+
+    while True:
+        key = stdscr.getch()
+        stdscr.clear()
+
+        if key == 10:  # Enter key
+            break
+        elif key == curses.KEY_BACKSPACE:
+            username = username[:-1]
+        else:
+            username += chr(key)
+
+        stdscr.addstr(1, 0, f"Please confirm your username: {username}")
+        stdscr.refresh()
+
+    while True:
+        key = stdscr.getch()
+        stdscr.clear()
+
+        if key == 10:  # Enter key
+            break
+        elif key == curses.KEY_BACKSPACE:
+            password = password[:-1]
+        else:
+            password += chr(key)
+
+        stdscr.addstr(1, 0, f"Please confirm your password: {password}")
+        stdscr.refresh()
 
     username_column = credentials_worksheet.col_values(1)
     password_column = credentials_worksheet.col_values(2)
@@ -35,61 +65,100 @@ def login():
         index = username_column.index(username)
         stored_password = password_column[index]
         if stored_password == password:
-            print("Login successful!")
+            stdscr.addstr(2, 0, "Login successful!")
+            stdscr.refresh()
+            stdscr.getch()
             return True
         else:
-            print("Incorrect password.")
+            stdscr.addstr(2, 0, "Incorrect password.")
     else:
-        print("Username not found.")
+        stdscr.addstr(2, 0, "Username not found.")
+
+    stdscr.refresh()
+    stdscr.getch()
     return False
 
 
-def register():
+def register(stdscr):
 
-    print("You have selected Register")
-    new_user = input("Please choose your username: ")
+    stdscr.clear()
+    stdscr.addstr(0, 0, "You have selected Register")
+    stdscr.refresh()
+
+    new_user = ""
+    new_password = ""
+
+    while True:
+        key = stdscr.getch()
+        stdscr.clear()
+
+        if key == 10:  # Enter key
+            break
+        elif key == curses.KEY_BACKSPACE:
+            new_user = new_user[:-1]
+        else:
+            new_user += chr(key)
+
+        stdscr.addstr(1, 0, f"Please choose your username: {new_user}")
+        stdscr.refresh()
+
+    while True:
+        key = stdscr.getch()
+        stdscr.clear()
+
+        if key == 10:  # Enter key
+            break
+        elif key == curses.KEY_BACKSPACE:
+            new_password = new_password[:-1]
+        else:
+            new_password += chr(key)
+
+        stdscr.addstr(1, 0, f"Please choose your password: {new_password}")
+        stdscr.refresh()
 
     username_column = credentials_worksheet.col_values(1)
 
     if new_user in username_column:
-        print("The username already exists. Please choose a different one.")
+        stdscr.addstr(2, 0, "The username already exists. Please choose a different one.")
     else:
-        new_password = input("Please choose your password: ")
 
         # Add the new user's credentials to the next available row.
         next_row = len(username_column) + 1
         credentials_worksheet.update_cell(next_row, 1, new_user)
         credentials_worksheet.update_cell(next_row, 2, new_password)
 
-        print("Registration successful!")
+        stdscr.addstr(2, 0, "Registration successful!")
 
+    stdscr.refresh()
+    stdscr.getch()
 
-def startup():
-
+def startup(stdscr):
     options = ["Login", "Register"]
     selected_option_index = 0
 
     while True:
-        print("\nPlease select an option:")
+        stdscr.clear()
+        stdscr.addstr(0, 0, "\nPlease select an option:")
+
         for i, option in enumerate(options):
-            print(f"{'>> ' if i == selected_option_index else '   '}{option}")
+            stdscr.addstr(i + 1, 0, f"{'>> ' if i == selected_option_index else '   '}{option}")
 
-        key = keyboard.read_event(suppress=True).name
+        key = stdscr.getch()
 
-        if key == "down" and selected_option_index < len(options) - 1:
+        if key == curses.KEY_DOWN and selected_option_index < len(options) - 1:
             selected_option_index += 1
-        elif key == "up" and selected_option_index > 0:
+        elif key == curses.KEY_UP and selected_option_index > 0:
             selected_option_index -= 1
-        elif key == "enter":
+        elif key == 10:  # Enter key
             if options[selected_option_index] == "Login":
-                if login():
+                if login(stdscr):
                     # Continue with other main menu options, since
                     # the user is now logged in.
                     pass  # Replace with main menu logic
             elif options[selected_option_index] == "Register":
-                register()
+                register(stdscr)
 
 
 if __name__ == "__main__":
+    curses.wrapper(startup)
 
-    startup()
