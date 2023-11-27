@@ -31,6 +31,7 @@ def main_options():
             "Update Password",
             "Add New Habit",
             "Delete Habit",
+            "Update Habit Frequency",
             "Update Today's Habits",
             "Showlast weeks overview",
             "Show 1 weekoverview from set date",
@@ -94,13 +95,23 @@ def main_options():
             )
 
             habit_options = habits_worksheet.col_values(1)
-            habit_frequency = habits_worksheet.col_values(2)
 
             if ex_habit in habit_options:
                 print("Habit has been confirmed.")
-                # ask client if they are sure they want to delete
-                # if yes, remove and return to main menu
-                # if no, ask user to confirm habit to be removed
+
+                answer = questionary.confirm(
+                    "Are you sure? Confirm Yes/No"
+                ).ask()
+
+                if answer:
+                    print("You have selected yes")
+                    habit_index = habit_options.index(ex_habit) + 1
+                    habits_worksheet.delete_row(habit_index)
+                    print("Habit Removed Sucessfully!")
+                    break
+                else:
+                    print("You have selected No")
+
             elif not habit_options:
                 print(
                     "A habit has not been confirmed, returning to Main Menu"
