@@ -17,6 +17,7 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('habit_tracker')
 credentials_worksheet = SHEET.worksheet('user_accounts')
 
+
 def login():
     print("You have selected Log In")
 
@@ -40,6 +41,7 @@ def login():
 
     return False
 
+
 def register():
     print("You have selected Register")
 
@@ -51,7 +53,10 @@ def register():
         if new_user in username_column:
             print("The username already exists. Please try again.")
         else:
-            new_password = questionary.password("Please choose your password:").ask()
+            new_password = (
+                questionary.password("Please choose your password:")
+                .ask()
+            )
 
             # Add the new user's credentials to the next available row.
             next_row = len(username_column) + 1
@@ -60,11 +65,16 @@ def register():
 
             print("Registration successful!")
             break
+
+
 def startup():
     print("Habit Tracker")
     options = ["Login", "Register"]
 
-    selected_option = questionary.select("Please select an option:", choices=options).ask()
+    selected_option = (
+        questionary.select("Please select an option:", choices=options)
+        .ask()
+    )
 
     if selected_option == "Login":
         if login():
@@ -73,6 +83,7 @@ def startup():
             pass  # Replace with main menu logic
     elif selected_option == "Register":
         register()
+
 
 if __name__ == "__main__":
     startup()
