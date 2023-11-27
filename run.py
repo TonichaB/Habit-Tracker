@@ -72,6 +72,7 @@ def main_options():
                     )
 
                     print("Password Updated!")
+                    main_options()
                     break
                 else:
                     print("Old Password Incorrect, Try Again")
@@ -90,11 +91,13 @@ def login():
         username_column = credentials_worksheet.col_values(1)
         password_column = credentials_worksheet.col_values(2)
 
+        # Check username & password against database
         if username in username_column:
             index = username_column.index(username)
             stored_password = password_column[index]
             if stored_password == password:
                 print("Login successful!")
+                # Proceed to Main Menu
                 main_options()
                 break
             else:
@@ -110,18 +113,23 @@ def new_habits(username):
     print("Welcome, {username}! Let's set up your habits!")
 
     while True:
+        # User enters a new habit to be tracked
         new_habit = questionary.text("Please type in a habit to track:").ask()
 
         habit_options = habits_worksheet.col_values(1)
         habit_frequency = habits_worksheet.col_values(2)
 
         if new_habit in habit_options:
+            # Habit already included in the database to be tracked
             print("You are already tracking this habit!")
         elif not new_habit:
+            # If the user selects enter with no text they
+            # progress to the Main Menu
             print("No habit entered. Skipping Habit Setup.")
             main_options()
             break
         elif new_habit not in habit_options:
+            # New habit created and saved to database
             next_row = len(habit_options) + 1
             habits_worksheet.update_cell(next_row, 1, new_habit)
 
@@ -139,13 +147,17 @@ def register():
     print("You have selected Register")
 
     while True:
+        # User creates a new username
         new_user = questionary.text("Please choose your username:").ask()
 
         username_column = credentials_worksheet.col_values(1)
 
         if new_user in username_column:
+            # If the username exists the user will need
+            # to try again
             print("The username already exists. Please try again.")
         else:
+            # If the username is new, the User can then add a password
             new_password = (
                 questionary.password("Please choose your password:")
                 .ask()
@@ -157,6 +169,8 @@ def register():
             credentials_worksheet.update_cell(next_row, 2, new_password)
 
             print("Registration successful!")
+            # Once the credentials are confirmed the User
+            # can start to build their habits
             new_habits(new_user)
             break
 
