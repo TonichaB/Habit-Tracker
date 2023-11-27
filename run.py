@@ -81,12 +81,35 @@ def main_options():
 
     # Option to add new habit repeats registration method
     elif choice == "Add New Habit":
-        new_habits()
-    
+        new_habits(user)
+
     # Option to delete a stored habit
     elif choice == "Delete Habit":
         print("Don't need to track a habit anymore?")
         print("No worries! Lets take it out of the tracker!")
+
+        while True:
+            ex_habit = questionary.text(
+                "Please confirm the habit to be removed:"
+            )
+
+            habit_options = habits_worksheet.col_values(1)
+            habit_frequency = habits_worksheet.col_values(2)
+
+            if ex_habit in habit_options:
+                print("Habit has been confirmed.")
+                # ask client if they are sure they want to delete
+                # if yes, remove and return to main menu
+                # if no, ask user to confirm habit to be removed
+            elif not habit_options:
+                print(
+                    "A habit has not been confirmed, returning to Main Menu"
+                )
+                main_options()
+                break
+            elif ex_habit not in habit_options:
+                print("Sorry we can't locate this habit, please try again")
+                print("Please note habits are case sensitive!")
 
 
 # defining the log in function
