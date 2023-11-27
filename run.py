@@ -20,45 +20,48 @@ credentials_worksheet = SHEET.worksheet('user_accounts')
 def login():
     print("You have selected Log In")
 
-    username = questionary.text("Please confirm your username:").ask()
-    password = questionary.password("Please confirm your password:").ask()
+    while True:
+        username = questionary.text("Please confirm your username:").ask()
+        password = questionary.password("Please confirm your password:").ask()
 
-    username_column = credentials_worksheet.col_values(1)
-    password_column = credentials_worksheet.col_values(2)
+        username_column = credentials_worksheet.col_values(1)
+        password_column = credentials_worksheet.col_values(2)
 
-    if username in username_column:
-        index = username_column.index(username)
-        stored_password = password_column[index]
-        if stored_password == password:
-            print("Login successful!")
-            return True
+        if username in username_column:
+            index = username_column.index(username)
+            stored_password = password_column[index]
+            if stored_password == password:
+                print("Login successful!")
+                break
+            else:
+                print("Incorrect password.")
         else:
-            print("Incorrect password.")
-    else:
-        print("Username not found.")
+            print("Username not found.")
 
     return False
 
 def register():
     print("You have selected Register")
 
-    new_user = questionary.text("Please choose your username:").ask()
+    while True:
+        new_user = questionary.text("Please choose your username:").ask()
 
-    username_column = credentials_worksheet.col_values(1)
+        username_column = credentials_worksheet.col_values(1)
 
-    if new_user in username_column:
-        print("The username already exists. Please try again.")
-    else:
-        new_password = questionary.password("Please choose your password:").ask()
+        if new_user in username_column:
+            print("The username already exists. Please try again.")
+        else:
+            new_password = questionary.password("Please choose your password:").ask()
 
-        # Add the new user's credentials to the next available row.
-        next_row = len(username_column) + 1
-        credentials_worksheet.update_cell(next_row, 1, new_user)
-        credentials_worksheet.update_cell(next_row, 2, new_password)
+            # Add the new user's credentials to the next available row.
+            next_row = len(username_column) + 1
+            credentials_worksheet.update_cell(next_row, 1, new_user)
+            credentials_worksheet.update_cell(next_row, 2, new_password)
 
-        print("Registration successful!")
-
+            print("Registration successful!")
+            break
 def startup():
+    print("Habit Tracker")
     options = ["Login", "Register"]
 
     selected_option = questionary.select("Please select an option:", choices=options).ask()
