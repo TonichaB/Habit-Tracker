@@ -1,6 +1,7 @@
 import gspread
 from google.oauth2.service_account import Credentials
 import questionary
+import questionary as qt
 
 # List of APIs requiring access
 SCOPE = [
@@ -16,8 +17,10 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 
 SHEET = GSPREAD_CLIENT.open('habit_tracker')
 credentials_worksheet = SHEET.worksheet('user_accounts')
+habits_worksheet = SHEET.worksheet('habits_list')
 
 
+# defining the log in function
 def login():
     print("You have selected Log In")
 
@@ -33,6 +36,7 @@ def login():
             stored_password = password_column[index]
             if stored_password == password:
                 print("Login successful!")
+                main_options()
                 break
             else:
                 print("Incorrect password.")
@@ -42,6 +46,35 @@ def login():
     return False
 
 
+# defining function to create user habits
+def new_habits(username):
+    print("Welcome, {username}! Let's set up your habits!")
+
+    while True:
+        new_habit = questionary.text("Please type in a habit to track:").ask()
+
+        habit_options = habits_worksheet.col_values(1)
+        habit_frequency = habits_worksheet.col_values(2)
+
+        if new_habit in habit_options:
+            print("You are already tracking this habit!")
+        elif new_habit not in habit_options:
+            next_row = len(habit_options) + 1
+            habits_worksheet.update_cell(next_row, 1, new_habit)
+
+            frequency = questionary.select(
+                "How often would you like to track this habit?",
+                choices=["Daily", "Weekly", "Monthly"]).ask()
+            next_row_f = len(habit_frequency) + 1
+            habits_worksheet.update_cell(next_row_f, 2, frequency)
+
+            print("Habit Saved!")
+        elif not new_habit:
+            print("No habit entered. Skipping Habit Setup.")
+            main_options()
+
+
+# defining the register function
 def register():
     print("You have selected Register")
 
@@ -64,11 +97,13 @@ def register():
             credentials_worksheet.update_cell(next_row, 2, new_password)
 
             print("Registration successful!")
+            new_habits(new_user)
             break
 
 
+# defining the start up function
 def startup():
-    print("Habit Tracker")
+    print("*** WELCOME TO HABIT TRACKER ***")
     options = ["Login", "Register"]
 
     selected_option = (
