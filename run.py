@@ -29,7 +29,7 @@ def main_options():
         "What would you like to do?",
         choices=[
             "Update Password",
-            "Add new habit",
+            "Add New Habit",
             "Delete Habit",
             "Update Today's Habits",
             "Showlast weeks overview",
@@ -78,6 +78,15 @@ def main_options():
                     print("Old Password Incorrect, Try Again")
             else:
                 print("Username not found or incorrect current password.")
+
+    # Option to add new habit repeats registration method
+    elif choice == "Add New Habit":
+        new_habits()
+    
+    # Option to delete a stored habit
+    elif choice == "Delete Habit":
+        print("Don't need to track a habit anymore?")
+        print("No worries! Lets take it out of the tracker!")
 
 
 # defining the log in function
