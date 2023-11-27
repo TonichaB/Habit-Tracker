@@ -20,6 +20,65 @@ credentials_worksheet = SHEET.worksheet('user_accounts')
 habits_worksheet = SHEET.worksheet('habits_list')
 
 
+# Main Page Functions
+def main_options():
+    print("Welcome {username} to your habit tracker!")
+
+    # User Options
+    choice = qt.select(
+        "What would you like to do?",
+        choices=[
+            "Update Password",
+            "Add new habit",
+            "Delete Habit",
+            "Update Today's Habits",
+            "Showlast weeks overview",
+            "Show 1 weekoverview from set date",
+            "Delete Account"
+        ]).ask()
+
+    # Update Password
+    if choice == "Update Password":
+        while True:
+            # Asks user to enter current details
+            user = questionary.text("Please confirm your username:").ask()
+            old_password = (
+                questionary.password("Please confirm your current password:")
+                .ask()
+            )
+
+            username_column = credentials_worksheet.col_values(1)
+            password_column = credentials_worksheet.col_values(2)
+
+            # If details are correct, proceed to allow password change
+            if user in username_column and old_password in password_column:
+                index = username_column.index(user)
+                stored_password = password_column[index]
+
+                if stored_password == old_password:
+                    print("Old Password Confirmed.")
+                    new_password = (
+                        questionary.password(
+                            "Please choose your new password:"
+                        ).ask()
+                    )
+
+                    # Update the password in the existing row
+                    row_index = index + 1
+                    credentials_worksheet.update_cell(
+                        row_index,
+                        2,
+                        new_password
+                    )
+
+                    print("Password Updated!")
+                    break
+                else:
+                    print("Old Password Incorrect, Try Again")
+            else:
+                print("Username not found or incorrect current password.")
+
+
 # defining the log in function
 def login():
     print("You have selected Log In")
@@ -58,6 +117,10 @@ def new_habits(username):
 
         if new_habit in habit_options:
             print("You are already tracking this habit!")
+        elif not new_habit:
+            print("No habit entered. Skipping Habit Setup.")
+            main_options()
+            break
         elif new_habit not in habit_options:
             next_row = len(habit_options) + 1
             habits_worksheet.update_cell(next_row, 1, new_habit)
@@ -69,9 +132,6 @@ def new_habits(username):
             habits_worksheet.update_cell(next_row_f, 2, frequency)
 
             print("Habit Saved!")
-        elif not new_habit:
-            print("No habit entered. Skipping Habit Setup.")
-            main_options()
 
 
 # defining the register function
