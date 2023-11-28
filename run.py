@@ -92,7 +92,7 @@ def main_options():
         while True:
             ex_habit = questionary.text(
                 "Please confirm the habit to be removed:"
-            )
+            ).ask()
 
             habit_options = habits_worksheet.col_values(1)
 
@@ -106,8 +106,9 @@ def main_options():
                 if answer:
                     print("You have selected yes")
                     habit_index = habit_options.index(ex_habit) + 1
-                    habits_worksheet.delete_row(habit_index)
+                    habits_worksheet.delete_rows(habit_index)
                     print("Habit Removed Sucessfully!")
+                    main_options()
                     break
                 else:
                     print("You have selected No")
