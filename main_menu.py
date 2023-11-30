@@ -27,6 +27,10 @@ def main_options():
     # User Options
     choice = qt.select(
         "What would you like to do?",
+        prefix='''
+            Use your arrow keys to navigate the list.
+            To select your answer press enter.
+        ''',
         choices=[
             "Update Password",
             "Add New Habit",
@@ -34,11 +38,7 @@ def main_options():
             "Update Habit Frequency",
             "Update Today's Habits",
             "View Habits",
-            "Delete Account"],
-        prefix='''
-            Use your arrow keys to navigate the list.
-            To select your answer press enter.
-        '''
+            "Delete Account"]
         ).ask()
 
     # Update Password
@@ -113,8 +113,8 @@ def main_options():
 
                 frequency = questionary.select(
                     "How often would you like to track this habit?",
-                    choices=["Daily", "Weekly", "Monthly"],
-                    prefix="Use Arrow Keys to select and Enter to submit."
+                    prefix="Use Arrow Keys to select and Enter to submit.",
+                    choices=["Daily", "Weekly", "Monthly"]
                     ).ask()
                 next_row_f = len(habit_frequency) + 1
                 habits_worksheet.update_cell(next_row_f, 2, frequency)

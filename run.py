@@ -83,11 +83,11 @@ def new_habits(username):
 
             frequency = questionary.select(
                 "How often would you like to track this habit?",
-                choices=["Daily", "Weekly", "Monthly"],
                 prefix='''
                     Use the arrow keys to navigate,
                     and press enter to submit.
-                '''
+                ''',
+                choices=["Daily", "Weekly", "Monthly"]
                 ).ask()
             next_row_f = len(habit_frequency) + 1
             habits_worksheet.update_cell(next_row_f, 2, frequency)
