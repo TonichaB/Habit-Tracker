@@ -55,7 +55,14 @@ def new_habits(username):
 
     while True:
         # User enters a new habit to be tracked
-        new_habit = questionary.text("Please type in a habit to track:").ask()
+        new_habit = questionary.text(
+            "Please type in a habit to track:",
+            prefix='''
+                Click Enter to submit your answer.
+                Press Enter without text to exit
+                back to the main menu!
+                '''
+        ).ask()
 
         habit_options = habits_worksheet.col_values(1)
         habit_frequency = habits_worksheet.col_values(2)
@@ -76,7 +83,12 @@ def new_habits(username):
 
             frequency = questionary.select(
                 "How often would you like to track this habit?",
-                choices=["Daily", "Weekly", "Monthly"]).ask()
+                choices=["Daily", "Weekly", "Monthly"],
+                prefix='''
+                    Use the arrow keys to navigate,
+                    and press enter to submit.
+                '''
+                ).ask()
             next_row_f = len(habit_frequency) + 1
             habits_worksheet.update_cell(next_row_f, 2, frequency)
 

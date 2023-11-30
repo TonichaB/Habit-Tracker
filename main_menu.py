@@ -84,7 +84,11 @@ def main_options():
         while True:
             new_habit = questionary.text(
                 "Please type in a habit to track:",
-                prefix="Click Enter to submit your answer."
+                prefix='''
+                Click Enter to submit your answer.
+                Press Enter without text to exit
+                back to the main menu!
+                '''
             ).ask()
 
             habit_options = habits_worksheet.col_values(1)
