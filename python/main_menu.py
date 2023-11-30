@@ -82,7 +82,31 @@ def main_options():
 
     # Option to add new habit repeats registration method
     elif choice == "Add New Habit":
-        new_habits(username)
+        new_habit = questionary.text("Please type in a habit to track:").ask()
+
+        habit_options = habits_worksheet.col_values(1)
+        habit_frequency = habits_worksheet.col_values(2)
+
+        if new_habit in habit_options:
+            # Habit already included in the database to be tracked
+            print("You are already tracking this habit!")
+        elif not new_habit:
+            # If the user selects enter with no text they
+            # progress to the Main Menu
+            print("No habit entered. Skipping Habit Setup.")
+            main_options()
+        elif new_habit not in habit_options:
+            # New habit created and saved to database
+            next_row = len(habit_options) + 1
+            habits_worksheet.update_cell(next_row, 1, new_habit)
+
+            frequency = questionary.select(
+                "How often would you like to track this habit?",
+                choices=["Daily", "Weekly", "Monthly"]).ask()
+            next_row_f = len(habit_frequency) + 1
+            habits_worksheet.update_cell(next_row_f, 2, frequency)
+
+            print("Habit Saved!")
 
     # Option to delete a stored habit
     elif choice == "Delete Habit":
