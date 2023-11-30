@@ -2,7 +2,6 @@ import gspread
 from google.oauth2.service_account import Credentials
 import questionary
 import questionary as qt
-from run import new_habits
 
 # List of APIs requiring access
 SCOPE = [
