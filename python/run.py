@@ -2,7 +2,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 import questionary
 import questionary as qt
-import main_menu
+from main_menu import main_options
 
 # List of APIs requiring access
 SCOPE = [
@@ -19,6 +19,7 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('habit_tracker')
 credentials_worksheet = SHEET.worksheet('user_accounts')
 habits_worksheet = SHEET.worksheet('habits_list')
+
 
 # defining the log in function
 def login():

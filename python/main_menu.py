@@ -1,3 +1,24 @@
+import gspread
+from google.oauth2.service_account import Credentials
+import questionary
+import questionary as qt
+from run import new_habits
+
+# List of APIs requiring access
+SCOPE = [
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/drive.file",
+    "https://www.googleapis.com/auth/drive"
+]
+
+# Constant variables
+CREDS = Credentials.from_service_account_file('creds.json')
+SCOPED_CREDS = CREDS.with_scopes(SCOPE)
+GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
+
+SHEET = GSPREAD_CLIENT.open('habit_tracker')
+credentials_worksheet = SHEET.worksheet('user_accounts')
+habits_worksheet = SHEET.worksheet('habits_list')
 
 
 # Main Page Functions
