@@ -34,8 +34,12 @@ def main_options():
             "Update Habit Frequency",
             "Update Today's Habits",
             "View Habits",
-            "Delete Account"
-        ]).ask()
+            "Delete Account"],
+        prefix='''
+            Use your arrow keys to navigate the list.
+            To select your answer press enter.
+        '''
+        ).ask()
 
     # Update Password
     if choice == "Update Password":
