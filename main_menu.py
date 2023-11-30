@@ -26,10 +26,10 @@ def main_options():
 
     # User Options
     choice = qt.select(
-        "What would you like to do?",
-        prefix='''
+        '''
             Use your arrow keys to navigate the list.
             To select your answer press enter.
+            What would you like to do?
         ''',
         choices=[
             "Update Password",
@@ -87,11 +87,11 @@ def main_options():
     elif choice == "Add New Habit":
         while True:
             new_habit = questionary.text(
-                "Please type in a habit to track:",
-                prefix='''
-                Click Enter to submit your answer.
-                Press Enter without text to exit
-                back to the main menu!
+                '''
+                    Please type in a habit to track:
+                    Click Enter to submit your answer.
+                    Press Enter without text to exit
+                    back to the main menu!
                 '''
             ).ask()
 
@@ -112,8 +112,10 @@ def main_options():
                 habits_worksheet.update_cell(next_row, 1, new_habit)
 
                 frequency = questionary.select(
-                    "How often would you like to track this habit?",
-                    prefix="Use Arrow Keys to select and Enter to submit.",
+                    '''
+                        How often would you like to track this habit?
+                        Use Arrow Keys to select and Enter to submit.
+                    ''',
                     choices=["Daily", "Weekly", "Monthly"]
                     ).ask()
                 next_row_f = len(habit_frequency) + 1
