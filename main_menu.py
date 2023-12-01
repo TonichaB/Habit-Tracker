@@ -36,8 +36,8 @@ def main_options():
             "Update Password",
             "Add New Habit",
             "Delete Habit",
-            "Update Habit Frequency",
-            "Update Today's Habits",
+            "Change Habit Frequency",
+            "Log Today's Habits",
             "View Habits",
             "Delete Account"]
         ).ask()
@@ -170,4 +170,17 @@ def main_options():
                 print("Sorry we can't locate this habit, please try again")
                 print("Please note habits are case sensitive!")
 
+    elif choices == "Change Habit Frequency":
+        print("Here you can change how often you want to complete a habit.")
+    elif choices == "Log Today's Habits":
+        print("What have you achieved today?")
+    elif choices == "View Habits":
+        print("Please select from the following options:")
+    elif choices == "Log Out"
+        print("You are now logged out!")
+        startup()
+        break 
+    
+    elif choices == "Delete Account:
+        print("We are sorry to see you go!")
     
