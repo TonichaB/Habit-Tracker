@@ -18,11 +18,12 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('habit_tracker')
 credentials_worksheet = SHEET.worksheet('user_accounts')
 habits_worksheet = SHEET.worksheet('habits_list')
+logged_in_user = ""
 
 
 # Main Page Functions
 def main_options():
-    print("Welcome {username} to your habit tracker!")
+    print(f'Welcome {logged_in_user} to your habit tracker!')
 
     # User Options
     choice = qt.select(
@@ -168,3 +169,5 @@ def main_options():
             elif ex_habit not in habit_options:
                 print("Sorry we can't locate this habit, please try again")
                 print("Please note habits are case sensitive!")
+
+    

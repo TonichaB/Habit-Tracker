@@ -19,6 +19,7 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('habit_tracker')
 credentials_worksheet = SHEET.worksheet('user_accounts')
 habits_worksheet = SHEET.worksheet('habits_list')
+logged_in_user = ""
 
 
 # defining the log in function
@@ -38,6 +39,9 @@ def login():
             stored_password = password_column[index]
             if stored_password == password:
                 print("Login successful!")
+
+                global logged_in_user = username
+
                 # Proceed to Main Menu
                 main_options()
                 break
@@ -50,8 +54,8 @@ def login():
 
 
 # defining function to create user habits
-def new_habits(username):
-    print("Welcome, {username}! Let's set up your habits!")
+def new_habits(logged_in_user):
+    print(f"Welcome, {logged_in_user}! Let's set up your habits!")
 
     while True:
         # User enters a new habit to be tracked
@@ -124,7 +128,7 @@ def register():
             print("Registration successful!")
             # Once the credentials are confirmed the User
             # can start to build their habits
-            new_habits(new_user)
+            new_habits(logged_in_user)
             break
 
 
