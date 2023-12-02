@@ -257,11 +257,16 @@ class Functions:
             # Get the current date
             current_date = datetime.now().strftime("%Y-%m-%d")
 
+            # Update the log worksheet with new entries
+            log_worksheet = self.habit_tracker.SHEET.worksheet('habit_log')
+
             # Update the spreadsheet with logged habits
             for habit in habits_completed:
                 habit_index = habit_options.index(habit)
-                self.habit_tracker.habits_worksheet.update_cell(
-                    habit_index + 1, 3, current_date
+                # This will extract habit name without username present
+                habit_name = habit_index.split('_', 1)[1]
+                log_worksheet.append_row(
+                    [self.habit_tracker.logged_in_user, habit_name, current_date]
                 )
                 print("Habits logged succesfully for today!")
 
