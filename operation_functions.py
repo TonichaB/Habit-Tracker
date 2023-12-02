@@ -236,6 +236,34 @@ class Functions:
 
     def log_habits(self):
         print("What have you achieved today?")
+        # Display saved habits
+        habit_options = self.habit_tracker.habits_worksheet.col_values(1)
+        user_habits = [
+            habit for habit in habit_options if habit.startswith(
+                self.habit_tracker.logged_in_user
+            )
+        ]
+
+        if not user_habits:
+            print("You have no habits to log for today!")
+            return
+        else:
+            # User can select habits completed
+            habits_completed = questionary.checkbox(
+                "Select the habits you have completed today:",
+                choices=user_habits
+            ).ask()
+
+            # Get the current date
+            current_date = datetime.now().strftime("%Y-%m-%d")
+
+            # Update the spreadsheet with logged habits
+            for habit in habits_completed:
+                habit_index = habit_options.index(habit)
+                self.habit_tracker.habits_worksheet.update_cell(
+                    habit_index + 1, 3, current_date
+                )
+                print("Habits logged succesfully for today!")
 
     def view_habits(self):
         print("Please select from the following options:")

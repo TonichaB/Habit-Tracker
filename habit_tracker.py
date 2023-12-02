@@ -90,7 +90,7 @@ class HabitTracker:
                 print("Registration successful!")
                 # Once the credentials are confirmed the User
                 # can start to build their habits
-                self.habit_operations.new_habit()
+                self.habit_operations.operation_functions.new_habit()
                 break
 
     # defining the start up function
