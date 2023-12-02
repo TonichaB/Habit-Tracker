@@ -207,3 +207,27 @@ def main_options():
             delete_account(logged_in_user)
         else:
             print("You have confirmed no, returning to Main Menu")
+
+def delete_account(logged_in_user):
+    username_column = credentials_worksheet.col_values(1)
+
+    if logged_in_user not in username_column:
+        print(f"User {logged_in_user} not found.")
+        return
+
+    # find the row index for the logged_in_user
+    user_index = username_column.index(logged_in_user) + 1
+
+    # delte the row in the user_accounts worksheet
+    credentials_worksheet.delete_rows(user_index)
+
+    # Delete all habits linked with the logged_in_user
+    habit_options = habits_worksheet.col_values(1)
+    user_habits = [habit for habit in habit_options if habit.startwith(logged_in_user)]
+
+    for habit in user_habits:
+        habit_index = habit_options.index(habit) + 1
+        habits_worksheet.delete_rows(habit_index)
+
+    print(f"Account for {logged_in_user} has been deleted. Returning to start.")
+    
