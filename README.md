@@ -2,29 +2,29 @@
 
 ## Contents
 
-### User Experience Design
-
-### The Strategy Plane
-
 ### Site Goals
 
-### User Stories
+#### Project Goals
 
-### The Scope Plane
+#### Project Outcomes
 
-### The Structure Plane
+### User Experience
 
-### Opportunities
+#### Target Audience
 
-### The Skeleton Plane
+#### User Expectations
+
+#### User Stories
 
 ### Logic Flow
-
-### The Surface Plane
 
 ### Features
 
 ### Future Enhancements
+
+### Technologies
+
+#### Libraries
 
 ### Testing
 

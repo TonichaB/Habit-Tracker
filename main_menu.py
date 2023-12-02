@@ -2,6 +2,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 import questionary
 import questionary as qt
+from run import startup
 
 # List of APIs requiring access
 SCOPE = [
@@ -23,6 +24,7 @@ logged_in_user = ""
 
 # Main Page Functions
 def main_options():
+
     print(f'Welcome {logged_in_user} to your habit tracker!')
 
     # User Options
@@ -170,17 +172,24 @@ def main_options():
                 print("Sorry we can't locate this habit, please try again")
                 print("Please note habits are case sensitive!")
 
-    elif choices == "Change Habit Frequency":
+    # Change the frequency applied to a saved habit
+    elif choice == "Change Habit Frequency":
         print("Here you can change how often you want to complete a habit.")
-    elif choices == "Log Today's Habits":
+
+    # User logs which habits have been completed for the current date
+    elif choice == "Log Today's Habits":
         print("What have you achieved today?")
-    elif choices == "View Habits":
+
+    # Opens further options to the user to view habits previously logged
+    elif choice == "View Habits":
         print("Please select from the following options:")
-    elif choices == "Log Out"
+
+    # Log out from current user and return to start page
+    elif choice == "Log Out":
         print("You are now logged out!")
         startup()
-        break 
-    
-    elif choices == "Delete Account:
+
+    # User can choose to delete their account
+    # and any saved data under their account
+    elif choice == "Delete Account":
         print("We are sorry to see you go!")
-    

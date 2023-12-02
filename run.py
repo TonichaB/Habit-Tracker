@@ -24,6 +24,8 @@ logged_in_user = ""
 
 # defining the log in function
 def login():
+    global logged_in_user
+
     print("You have selected Log In")
 
     while True:
@@ -40,7 +42,7 @@ def login():
             if stored_password == password:
                 print("Login successful!")
 
-                global logged_in_user = username
+                logged_in_user = username
 
                 # Proceed to Main Menu
                 main_options()
@@ -101,6 +103,8 @@ def new_habits(logged_in_user):
 
 # defining the register function
 def register():
+    global logged_in_user
+
     print("You have selected Register")
 
     while True:
@@ -124,6 +128,8 @@ def register():
             next_row = len(username_column) + 1
             credentials_worksheet.update_cell(next_row, 1, new_user)
             credentials_worksheet.update_cell(next_row, 2, new_password)
+
+            logged_in_user = new_user
 
             print("Registration successful!")
             # Once the credentials are confirmed the User
