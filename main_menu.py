@@ -110,9 +110,13 @@ def main_options():
                 print("No habit entered. Returning to Menu.")
                 main_options()
             elif new_habit not in habit_options:
+
+                # Add username to the habit saved
+                formatted_habit = f"{logged_in_user}_{new_habit}"
+
                 # New habit created and saved to database
                 next_row = len(habit_options) + 1
-                habits_worksheet.update_cell(next_row, 1, new_habit)
+                habits_worksheet.update_cell(next_row, 1, formatted_habit)
 
                 frequency = questionary.select(
                     '''
@@ -193,3 +197,13 @@ def main_options():
     # and any saved data under their account
     elif choice == "Delete Account":
         print("We are sorry to see you go!")
+
+        answer = questionary.confirm(
+            '''Are you sure you want to delete your account?
+            Confirm Y (Yes) or N (No)'''
+        ).ask()
+
+        if answer:
+            delete_account(logged_in_user)
+        else:
+            print("You have confirmed no, returning to Main Menu")

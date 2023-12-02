@@ -83,9 +83,13 @@ def new_habits(logged_in_user):
             main_options()
             break
         elif new_habit not in habit_options:
+
+            # Add the username within the new habit name
+            formatted_habit = f"{logged_in_user}_{new_habit}"
+
             # New habit created and saved to database
             next_row = len(habit_options) + 1
-            habits_worksheet.update_cell(next_row, 1, new_habit)
+            habits_worksheet.update_cell(next_row, 1, formatted_habit)
 
             frequency = questionary.select(
                 '''
