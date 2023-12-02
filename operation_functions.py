@@ -285,3 +285,39 @@ class Functions:
             self.view_habits_in_period()
         elif view_options == "Return to Main Menu":
             self.habit_operations.main_options()
+
+    def view_current_date_habits(self):
+        # Get the current date
+        current_date = datetime.now().strftime('%Y-%m-%d')
+
+        # Get the username to filter saved habits
+        username = self.habit_tracker.logged_in_user
+
+        # Get the log worksheet
+        log_worksheet = self.habit_tracker.SHEET.worksheet('habit_log')
+
+        # Get the entries for the current user and current date
+        user_entries = log_worksheet.get_all_values(
+            value_render_option='FORMATTED_VALUE',
+            dateTImeRenderOption='FORMATTED_STRING',
+            datetime_representation='SERIAL_NUMBER',
+            majorDImension='ROWS',
+            date_time_render_option='FORMATTED_STRING',
+            ranges=f'A:C',
+            include_tailing_empty_rows=False,
+            value_render_option='UNFORMATTED_VALUE',
+            params={'valueRenderOption': 'FORMATTED_VALUE'}
+        )
+
+        # FIlter the entries based on user and date
+        filtered_entries = [entry for entry in user_entries if entry[0] == username and entry[2] == current_date]
+
+        if filtered_entries:
+            print("Habits logged for the current date ({}):".format(current_date))
+            for entry in filtered_entries:
+                print(f"Habit: {entry[1]}")
+        else:
+            print("No habits have been logged for the current date.")
+
+    def view_habits_in_period(self):
+        
