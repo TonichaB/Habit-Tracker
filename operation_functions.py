@@ -191,6 +191,47 @@ class Functions:
 
     def update_frequency(self):
         print("Change how often you want to complete a habit.")
+        # Display the list of saved habits
+        habit_options = self.habit_tracker.habits_worksheet.col_values(1)
+        user_habits = [
+            habit for habit in habit_options if habit.startswith(
+                self.habit_tracker.logged_in_user
+            )
+        ]
+
+        if not user_habits:
+            print("You have not saved any habits yet!")
+            return
+
+        # Allow user to select a habit
+        else:
+            habit_to_change = questionary.select(
+                "Please choose a habit to change the frequency:",
+                choices=user_habits).ask()
+
+            # Find the index of habit within the list
+            habit_index = user_habits.index(habit_to_change)
+
+            # User chooses a new frequency
+            new_frequency = questionary.select(
+                "Choose a new frequency:",
+                choices=["Daily", "Weekly", "Monthly"]
+            ).ask()
+
+            print(
+                f'''You have selected to change:
+                {habit_to_change} to {new_frequency}'''
+            )
+            answer = questionary.confirm("Is this correct?").ask()
+
+            if answer:
+                # Update habit frequency in spreadsheet
+                self.habit_tracker.habits_worksheet.update_cell(
+                    habit_index + 1, 2, new_frequency
+                )
+                print(f"{habit_to_change} has been updated to {new_frequency}")
+            else:
+                print("Habit frequency has not been updated")
 
     def log_habits(self):
         print("What have you achieved today?")
