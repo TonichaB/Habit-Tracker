@@ -3,7 +3,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 import questionary
 import questionary as qt
-from habit_operations import HabitOperations, main_options, delete_account
+from habit_operations import HabitOperations
 
 
 class HabitTracker:
@@ -90,7 +90,7 @@ class HabitTracker:
                 print("Registration successful!")
                 # Once the credentials are confirmed the User
                 # can start to build their habits
-                self.habit_operations.new_habits()
+                self.habit_operations.new_habit()
                 break
 
     # defining the start up function
@@ -108,8 +108,3 @@ class HabitTracker:
                 self.habit_operations.main_options()
         elif selected_option == "Register":
             self.register()
-
-    habit_tracker = HabitTracker()
-
-    if __name__ == "__main__":
-        habit_tracker.startup()
