@@ -1,5 +1,4 @@
 import questionary
-import questionary as qt
 
 
 class HabitOperations:
@@ -15,7 +14,7 @@ def main_options(self):
         )
 
     # User Options
-    choice = qt.select(
+    choice = questionary.select(
         '''
             Use your arrow keys to navigate the list.
             To select your answer press enter.
@@ -70,7 +69,7 @@ def main_options(self):
                     )
 
                     print("Password Updated!")
-                    main_options(self)
+                    self.main_options()
                     break
                 else:
                     print("Old Password Incorrect, Try Again")
@@ -99,7 +98,7 @@ def main_options(self):
                 # If the user selects enter with no text they
                 # progress to the Main Menu
                 print("No habit entered. Returning to Menu.")
-                main_options(self)
+                self.habit_operations.main_options()
             elif new_habit not in habit_options:
 
                 # Add username to the habit saved
@@ -157,7 +156,7 @@ def main_options(self):
                         habit_index
                     )
                     print("Habit Removed Sucessfully!")
-                    main_options(self)
+                    self.habit_operations.main_options()
                     break
                 # If user types 'N' the habit is not removed
                 else:
@@ -168,7 +167,7 @@ def main_options(self):
                 print(
                     "A habit has not been confirmed, returning to Main Menu"
                 )
-                main_options(self)
+                self.habit_operations.main_options()
                 break
 
             # If the habit has been typed incorrectly the user is
@@ -191,7 +190,6 @@ def main_options(self):
 
     # Log out from current user and return to start page
     elif choice == "Log Out":
-        logged_in_user = ""
         print("You are now logged out!")
         self.habit_tracker.startup()
 
@@ -206,7 +204,7 @@ def main_options(self):
         ).ask()
 
         if answer:
-            delete_account(logged_in_user)
+            self.habit_operations.delete_account()
         else:
             print("You have confirmed no, returning to Main Menu")
 
@@ -227,7 +225,7 @@ def delete_account(self):
     # Delete all habits linked with the logged_in_user
     habit_options = self.habit_tracker.habits_worksheet.col_values(1)
     user_habits = [
-        habit for habit in habit_options if habit.startwith(
+        habit for habit in habit_options if habit.startswith(
             self.habit_tracker.logged_in_user
         )]
 
