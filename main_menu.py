@@ -208,6 +208,7 @@ def main_options():
         else:
             print("You have confirmed no, returning to Main Menu")
 
+
 def delete_account(logged_in_user):
     username_column = credentials_worksheet.col_values(1)
 
@@ -223,11 +224,15 @@ def delete_account(logged_in_user):
 
     # Delete all habits linked with the logged_in_user
     habit_options = habits_worksheet.col_values(1)
-    user_habits = [habit for habit in habit_options if habit.startwith(logged_in_user)]
+    user_habits = [
+        habit for habit in habit_options if habit.startwith(logged_in_user)
+        ]
 
     for habit in user_habits:
         habit_index = habit_options.index(habit) + 1
         habits_worksheet.delete_rows(habit_index)
 
-    print(f"Account for {logged_in_user} has been deleted. Returning to start.")
-    
+    print(
+        f"Account for {logged_in_user} has been deleted. Returning to start."
+        )
+    startup()
