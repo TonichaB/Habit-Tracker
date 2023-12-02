@@ -25,7 +25,7 @@ class HabitTracker:
         self.credentials_worksheet = self.SHEET.worksheet('user_accounts')
         self.habits_worksheet = self.SHEET.worksheet('habits_list')
         self.logged_in_user = ""
-        self.habit_operations = HabitOperations(self)
+        self.habit_operations = None
 
     # defining the log in function
     def login(self):
@@ -45,14 +45,14 @@ class HabitTracker:
                 index = username_column.index(username)
                 stored_password_hash = password_column[index]
                 # Use bcrypt to verify the password
-                if bcrypt.checkpw(
+                if (bcrypt.checkpw(
                         password.encode('utf-8'),
-                        stored_password_hash.encode('utf-8'))
-                print("Login successful!")
+                        stored_password_hash.encode('utf-8'))):
+                    print("Login successful!")
 
-                # Proceed to Main Menu
-                self.habit_operations.main_options()
-                break
+                    # Proceed to Main Menu
+                    self.habit_operations.main_options()
+                    break
                 else:
                     print("Incorrect password.")
             else:
@@ -92,7 +92,7 @@ class HabitTracker:
                 next_row = len(username_column) + 1
                 self.credentials_worksheet.update_cell(next_row, 1, new_user)
                 self.credentials_worksheet.update_cell(
-                    next_row, 2, hashed_password.decode(utf-8)
+                    next_row, 2, hashed_password.decode('utf-8')
                 )
 
                 self.logged_in_user = new_user

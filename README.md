@@ -1,6 +1,9 @@
 # Habit Tracker
 
 ## Contents
+- [Site Goals](#site-goals)
+    - [Project Goals](#project-goals)
+    - [Project Outcomes](#project-outcomes)
 
 ### Site Goals
 
