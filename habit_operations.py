@@ -32,52 +32,9 @@ class HabitOperations:
                 "Delete Account"]
             ).ask()
 
-        # Update Password
+        # Update password option
         if choice == "Update Password":
-            while True:
-                # Asks user to enter current details
-                user = questionary.text("Please confirm your username:").ask()
-                old_password = (
-                    questionary.password(
-                        "Please confirm your current password:"
-                    ).ask()
-                )
-
-                username_column = (
-                    self.habit_tracker.credentials_worksheet.col_values(1)
-                )
-                password_column = (
-                    self.habit_tracker.credentials_worksheet.col_values(2)
-                )
-
-                # If details are correct, proceed to allow password change
-                if user in username_column and old_password in password_column:
-                    index = username_column.index(user)
-                    stored_password = password_column[index]
-
-                    if stored_password == old_password:
-                        print("Old Password Confirmed.")
-                        new_password = (
-                            questionary.password(
-                                "Please choose your new password:"
-                            ).ask()
-                        )
-
-                        # Update the password in the existing row
-                        row_index = index + 1
-                        self.habit_tracker.credentials_worksheet.update_cell(
-                            row_index,
-                            2,
-                            new_password
-                        )
-
-                        print("Password Updated!")
-                        self.main_options()
-                        break
-                    else:
-                        print("Old Password Incorrect, Try Again")
-                else:
-                    print("Username not found or incorrect current password.")
+            self.operation_functions.update_password()
 
         # Option to add new habit repeats registration method
         elif choice == "Add New Habit":
@@ -89,15 +46,15 @@ class HabitOperations:
 
         # Change the frequency applied to a saved habit
         elif choice == "Change Habit Frequency":
-            print("Change how often you want to complete a habit.")
+            self.operation_functions.update_frequency()
 
         # User logs which habits have been completed for the current date
         elif choice == "Log Today's Habits":
-            print("What have you achieved today?")
+            self.operation_functions.log_habits()
 
         # Opens further options to the user to view habits previously logged
         elif choice == "View Habits":
-            print("Please select from the following options:")
+            self.operation_functions.view_habits()
 
         # Log out from current user and return to start page
         elif choice == "Log Out":
