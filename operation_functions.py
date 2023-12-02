@@ -265,9 +265,11 @@ class Functions:
                 habit_index = habit_options.index(habit)
                 # This will extract habit name without username present
                 habit_name = habit_index.split('_', 1)[1]
-                log_worksheet.append_row(
-                    [self.habit_tracker.logged_in_user, habit_name, current_date]
-                )
+                log_worksheet.append_row([
+                    self.habit_tracker.logged_in_user,
+                    habit_name,
+                    current_date
+                ])
                 print("Habits logged succesfully for today!")
 
     def view_habits(self):
@@ -299,25 +301,83 @@ class Functions:
         # Get the entries for the current user and current date
         user_entries = log_worksheet.get_all_values(
             value_render_option='FORMATTED_VALUE',
-            dateTImeRenderOption='FORMATTED_STRING',
+            dateTimeRenderOption='FORMATTED_STRING',
             datetime_representation='SERIAL_NUMBER',
-            majorDImension='ROWS',
+            majorDimension='ROWS',
             date_time_render_option='FORMATTED_STRING',
             ranges=f'A:C',
             include_tailing_empty_rows=False,
-            value_render_option='UNFORMATTED_VALUE',
+            valueRenderOption='UNFORMATTED_VALUE',
             params={'valueRenderOption': 'FORMATTED_VALUE'}
         )
 
         # FIlter the entries based on user and date
-        filtered_entries = [entry for entry in user_entries if entry[0] == username and entry[2] == current_date]
+        filtered_entries = [
+            entry for entry in user_entries
+            if entry[0] == username and entry[2] == current_date
+        ]
 
         if filtered_entries:
-            print("Habits logged for the current date ({}):".format(current_date))
+            print(
+                "Habits logged for the current date ({}):".format(current_date)
+            )
             for entry in filtered_entries:
                 print(f"Habit: {entry[1]}")
         else:
             print("No habits have been logged for the current date.")
 
     def view_habits_in_period(self):
-        
+        # Get the start and end date from the user
+        start_date_str = questionary.text(
+            "Plese enter a start date (YYYY-MM-DD)"
+        ).ask()
+        end_date_str = questionary.text(
+            "Please enter an end date (YYYY-MM-DD"
+        ).ask()
+
+        try:
+            start_date = datetime.strptime(start_date_str, '%Y-%m-%d')
+            end_date = datetime.strftime(end_date_str, '%Y-%m-%d')
+        except ValueError:
+            print("Invalid date format. Please use YYYY-MM-DD.")
+            return
+
+        # Get the username to filter the habits
+        username = self.habit_tracker.logged_in_user
+
+        # Get the log worksheet
+        log_worksheet = self.habit_tracker.SHEET.worksheet('habit_log')
+
+        # Get the user entries within the specified date range
+        date_filter = (
+            f'{start_date.strftime("%Y-%m-%d")}:'
+            f'{end_date.strftime("%Y-%m-%d")}'
+        )
+        user_entries = log_worksheet.get_all_values(
+            value_render_option='FORMATTED_VALUE',
+            dateTimeRenderOption='FORMATTED_STRING',
+            datetime_representation='SERIAL_NUMBER',
+            majorDimension='ROWS',
+            date_time_render_option='FORMATTED_STRING',
+            ranges=f'A:C',
+            include_tailing_empty_rows=False,
+            valueRenderOption='UNFORMATTED_VALUE',
+            params={'valueRenderOption': 'FORMATTED_VALUE'}
+        )
+
+        # Filter entries for user and date range
+        filtered_entries = [
+            entry for entry in user_entries
+            if entry[0] == username and date_filter.startswith(entry[2])
+        ]
+
+        # Display the filtered entries
+        if filtered_entries:
+            print(
+                "Habits logged between {} and {}:".format(
+                    start_date_str, end_date_str)
+            )
+            for entry in filtered_entries:
+                print(f"Date: {entry[2]}, Habit: {entry[1]}")
+        else:
+            print("There are no habits logged within this time period.")
