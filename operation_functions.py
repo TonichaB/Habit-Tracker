@@ -1,5 +1,6 @@
 import questionary
-from datetime import datetime
+from datetime import datetime, timedelta
+import bcrypt
 
 
 class Functions:
@@ -164,9 +165,12 @@ class Functions:
             # If details are correct, proceed to allow password change
             if user in username_column and old_password in password_column:
                 index = username_column.index(user)
-                stored_password = password_column[index]
+                stored_password_hash = password_column[index]
 
-                if stored_password == old_password:
+                if bcrypt.checkpw(
+                    old_password.encode('utf-8'),
+                    stored_password_hash.encode('utf-8')
+                ):
                     print("Old Password Confirmed.")
                     new_password = (
                         questionary.password(
@@ -174,12 +178,18 @@ class Functions:
                         ).ask()
                     )
 
+                    # Use bcrypt to hash the new password
+                    new_password_hash = bcrypt.hashpw(
+                        new_password.encode('utf-8'),
+                        bcrypt.gensalt()
+                    )
+
                     # Update the password in the existing row
                     row_index = index + 1
                     self.habit_tracker.credentials_worksheet.update_cell(
                         row_index,
                         2,
-                        new_password
+                        new_password_hash.decode('utf-8')
                     )
 
                     print("Password Updated!")
