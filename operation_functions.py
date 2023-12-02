@@ -88,3 +88,58 @@ class Functions:
                 )
 
                 print("Habit Saved!")
+
+
+def delete_habit(self):
+    print("Don't need to track a habit anymore?")
+    print("No worries! Lets take it out of the tracker!")
+
+    while True:
+        ex_habit = questionary.text(
+            "Please confirm the habit to be removed:"
+        ).ask()
+
+        habit_options = (
+            self.habit_tracker.habits_worksheet.col_values(1)
+        )
+
+        if ex_habit in habit_options:
+            print("Habit has been confirmed.")
+
+            # Before deleting user is asked whether they are sure
+            answer = questionary.confirm(
+                "Are you sure? Confirm Yes/No"
+            ).ask()
+
+            # If user types 'Y' the habit will be removed
+            if answer:
+                print("You have selected yes")
+                habit_index = (
+                    self.habit_tracker.habit_options.index(
+                        ex_habit
+                    ) + 1
+                )
+                self.habit_tracker.habits_worksheet.delete_rows(
+                    habit_index
+                )
+                print("Habit Removed Sucessfully!")
+                self.main_options()
+                break
+            # If user types 'N' the habit is not removed
+            else:
+                print("You have selected No")
+
+            # If the user does not enter anything, return to Main Menu
+        elif not habit_options:
+            print(
+                '''A habit has not been confirmed.
+                Returning to Main Menu'''
+            )
+            self.main_options()
+            break
+
+        # If the habit has been typed incorrectly the user is
+        # notified and will be asked to enter habit details again
+        elif ex_habit not in habit_options:
+            print("Sorry we can't locate this habit, please try again")
+            print("Please note habits are case sensitive!")
