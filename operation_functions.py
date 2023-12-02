@@ -271,4 +271,17 @@ class Functions:
                 print("Habits logged succesfully for today!")
 
     def view_habits(self):
-        print("Please select from the following options:")
+        view_options = questionary.select(
+            "Please select from the following options:",
+            choices=[
+                "View Today's Habits",
+                "View Habits for a Selected Period",
+                "Return to Main Menu"]
+        ).ask()
+
+        if view_options == "View Today's Habits":
+            self.view_current_date_habits()
+        elif view_options == "View Habits for a Selected Period":
+            self.view_habits_in_period()
+        elif view_options == "Return to Main Menu":
+            self.habit_operations.main_options()
