@@ -3,6 +3,7 @@ from datetime import datetime, timedelta
 import bcrypt
 import re
 
+
 class Functions:
     def __init__(self, habit_operations, habit_tracker):
         self.habit_operations = habit_operations
@@ -389,11 +390,21 @@ class Functions:
             print("There are no habits logged within this time period.")
         self.habit_operations.main_options()
 
-    def validate_username(self,username):
-        """ 
+    def validate_username(self, username):
+        """
         Used to validate the format of the username.
         Will return as true if the username is valid.
         Will return false if the username is invalid
         """
-        # Validation logic.
+        # Check length
+        if not (4 <= len(username) <= 12):
+            return False
 
+        # Check characters set (alphanumeric, spaces and special characters)
+        if not all(
+            char.isalnum() or char in "!@#$%^&*()-_+="
+            for char in username
+        ):
+            return False
+
+        return True

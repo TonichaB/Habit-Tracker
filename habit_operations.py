@@ -65,7 +65,7 @@ class HabitOperations:
             )
 
             # Validate the username format
-            if not self.operation_functions.validate_username(username):
+            if not self.operation_functions.validate_username(new_user):
                 print("Invalid username format. Please try again")
                 continue
 
