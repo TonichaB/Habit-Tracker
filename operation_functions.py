@@ -368,16 +368,13 @@ class Functions:
         log_worksheet = self.habit_tracker.SHEET.worksheet('habit_log')
 
         # Get the user entries within the specified date range
-        date_filter = (
-            f'{start_date.strftime("%Y-%m-%d")}:'
-            f'{end_date.strftime("%Y-%m-%d")}'
-        )
         user_entries = log_worksheet.get_all_values()
 
         # Filter entries for user and date range
         filtered_entries = [
             entry for entry in user_entries
-            if entry[0] == username and date_filter.startswith(entry[2])
+            if entry[0] == username and
+            start_date <= datetime.strptime(entry[2], '%Y-%m-%d') <= end_date
         ]
 
         # Display the filtered entries
