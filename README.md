@@ -11,13 +11,12 @@ You can access the live application [here!](https://habit-tracker-tb-f3dc632b7d9
         - [Features](#features)
             - [Existing Features](#existing-features)
             - [Future Enhancements](#future-enhancements)
-        - [Handling of User Input](#handling-of-user-input)
         - [User Options and Instructions](#user-options-and-instructions)
+        - [Handling of User Input](#handling-of-user-input)
         - [Libraries Imported](#libraries-imported)
 - [User Experience](#user-experience)
     - [Target Audience](#target-audience)
-    - [User Expectations](#user-expectations)
-    - [User Stories](#user-stories)
+    - [User Stores](#user-stories)
 - [Logic Flow](#logic-flow)
 - [Technologies](#technologies)
     - [Libraries](#libraries)
@@ -91,8 +90,6 @@ Whilst I am happy with the current features within this project, with additional
 - Habit Examples- If a user is struggling to think of a habit to track, a new function could include the ability to view examples of habits that other users have saved (making sure not to include the user details associated with the saved habit) that they could then select to track themselves.
 - Fix Deprication Warning- Whilst for this project it was not necessary to fix the Deprication warning in relation to the gspread library, with more time I would refactor the code to utilise 'google-auth' over 'oauth2client'. Please see [Bugs](#bugs) below noting how I have chosen to address this in the meantime.
 
-##### Handling of User Input
-
 ##### User Options and Instructions
 
 So as to provide accessibility and a smooth user experience, whenever a user is presented with a question or input request they will be given instructions on how to action each step. This includes the following examples:<br>
@@ -107,6 +104,10 @@ There are 4 occassions in this project where the user is presented with options 
 When the user selects to log their habits for the current date, they will be presented with a list of the habits saved specifically for that user. They will be given instructions on how to navigate the options presented, how to select which option to log, how to toggle the options and how to invert the options.<br>
 ![Multiple Choice Selection]()<br>
 
+##### Handling of User Input
+
+Each time a user provides any form of input to the terminal, their response will be validated and the user will be informed whether their input has been successful or not. 
+
 ##### Libraries Imported
 
 I have imported a number of libraries within this project to improve the overall functionality and user experience. Details for the specific libraries included are show [here](#libraries).
@@ -115,9 +116,39 @@ I have imported a number of libraries within this project to improve the overall
 
 #### Target Audience
 
-#### User Expectations
+This project has been created for a target audience of young adults/adults from any background. In particular for users who would like to follow a healthier lifestyle by building up regular habits they are able to track daily.
 
 #### User Stories
+
+First Time User:<br>
+
+> *"As a new user, I would like to register for a new account"*
+>
+> *"As a new user, I would like to create new habits to be tracked"*
+>
+> *"As a new user, I would like to receive directions on how to 
+> navigate through the application"*
+>
+> *"As a new user, I have not used CLI before and would like to know
+> my inputs are valid"*
+
+Returning User:<br>
+
+> *"As a returning user, I would like to log in using previously
+> created credentials"*
+>
+> *"As a returning user, I would like to view my completed habits
+> for a specific time period"*
+
+All Users:<br>
+
+> *"As a user, I would like to confirm my completed habits for the
+> current date"*
+>
+> *"As a user, I would like the option to delete my account and all
+> stored data associated with my account"*
+>
+> *"As a user, I would like the option to change my password"*
 
 ### Logic Flow
 
@@ -144,12 +175,34 @@ The following Libraries have been imported for this project:<br>
 5. datetime - This library has been used to allow the program to pull the current date for the user interaction which is used when logging and viewing tracked habits.
 6. re - This library (which stands for regular expressions) has been used when validating usernames and passwords to ensure the user input matches the requirements set out in the validation functions.
 7. time - This library has been used to create a time delay prior to clearing the terminal so the user can see any printed messages applicable for their actions.
+8. shutup - This library has been used to allow the files to ignore the deprecation warning relating to the gspread library.
 
 ### Testing
 
 ### Bugs
 
+When developing the project there were a few bugs I came accross that thankfully I was able to fix to allow the application to run correctly.
 
+1. Unable to view terminal output.<br>
+At the start of the development process I attempted to use the 'keyboard' library within Python, however this type of library was not compatible with the Code Institute Respository Template, and therefore prevented the terminal from running the project successfully. For this reason I chose to instead utilise the Questionary library which allowed the project to run in the terminal, whilst also presenting the code in a user-friendly manner.
+
+2. Unable to Delete Habit. <br>
+When creating the function for a user to delete a chosen habit from the database, an error occured whereby the user was not given the opportunity to input the details for the habit to be deleted, and instead the terminal would continuously print that the habit could not be located. This was caused by an error with the initial request for user input. I have been able to resolve this and now the user can input the details of the habit they would like to remove. <br>
+Delete Habit Bug:<br>
+![Delete Habit Bug]()<br>
+Delete Habit Fixed:<br>
+![Delete Habit Fixed]()<br>
+
+3. Deprecation Warning.<br>
+Part way through the development of the project I noticed a deprecation warning would appear when running the project in the terminal. After looking into the issue being raised in this warning (please see further details within the [Resources](#resources) section below) I was able to determine that the warning would not affect the functionality of the project and therefore I could choose to ignore this warning. I chose to utilise a library within python called 'shutup' which would set the workspace to ignore these warnings. As this would remove any warnings of this type, I chose not to implement this solution until all other aspects of the project had been completed so I would not miss any other warnings that could negatively impact the project.<br>
+Deprication Warning:<br>
+![Deprication Warning]()<br>
+
+4. Password Validation.
+
+5. Logging Completed Weekly/Monthly Habits.
+
+6. Deleted Account- Removing All Stored Habits.
 
 ### Deployment
 
