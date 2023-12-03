@@ -1,5 +1,6 @@
 import questionary
 from operation_functions import Functions
+import bcrypt
 
 
 class HabitOperations:
@@ -7,12 +8,93 @@ class HabitOperations:
         self.habit_tracker = habit_tracker
         self.operation_functions = Functions(self, habit_tracker)
 
-    def set_functions(self, operation_functions):
-        self.operation_functions = operation_functions
+    # defining the log in function
+    def login(self):
+        print("You have selected Log In")
+
+        while True:
+            username = questionary.text("Please confirm your username:").ask()
+            password = questionary.password(
+                "Please confirm your password:"
+            ).ask()
+
+            username_column = (
+                self.habit_tracker.credentials_worksheet.col_values(1)
+            )
+            password_column = (
+                self.habit_tracker.credentials_worksheet.col_values(2)
+            )
+
+            # Check username & password against database
+            if username in username_column:
+                index = username_column.index(username)
+                stored_password_hash = password_column[index]
+                # Use bcrypt to verify the password
+                if (bcrypt.checkpw(
+                        password.encode('utf-8'),
+                        stored_password_hash.encode('utf-8'))):
+                    print("Login successful!")
+
+                    # Proceed to Main Menu
+                    self.main_options()
+                    break
+                else:
+                    print("Incorrect password.")
+            else:
+                print("Username not found.")
+
+        return False
+
+    # defining the register function
+    def register(self):
+
+        print("You have selected Register")
+
+        while True:
+            # User creates a new username
+            new_user = questionary.text("Please choose your username:").ask()
+
+            username_column = (
+                self.habit_tracker.credentials_worksheet.col_values(1)
+            )
+
+            if new_user in username_column:
+                # If the username exists the user will need
+                # to try again
+                print("The username already exists. Please try again.")
+            else:
+                # If the username is new, the User can then add a password
+                new_password = (
+                    questionary.password("Please choose your password:")
+                    .ask()
+                )
+
+                # Use bcrypt to hash the password
+                hashed_password = bcrypt.hashpw(
+                    new_password.encode('utf-8'),
+                    bcrypt.gensalt()
+                )
+
+                # Add the new user's credentials to the next available row.
+                next_row = len(username_column) + 1
+                self.habit_tracker.credentials_worksheet.update_cell(
+                    next_row, 1, new_user
+                )
+                self.habit_tracker.credentials_worksheet.update_cell(
+                    next_row, 2, hashed_password.decode('utf-8')
+                )
+
+                self.logged_in_user = new_user
+
+                print("Registration successful!")
+                # Once the credentials are confirmed the User
+                # can start to build their habits
+                self.operation_functions.new_habit()
+                break
 
     # Main Page Functions
     def main_options(self):
-        from habit_tracker import HabitTracker
+
         print(
             f'Welcome {self.habit_tracker.logged_in_user} '
             f'to your habit tracker!'
