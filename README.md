@@ -95,6 +95,18 @@ Whilst I am happy with the current features within this project, with additional
 
 ##### User Options and Instructions
 
+So as to provide accessibility and a smooth user experience, whenever a user is presented with a question or input request they will be given instructions on how to action each step. This includes the following examples:<br>
+
+- Text Input Required<br>
+Throughout the application there are a few different functions that will require the user to type a response to a question presented. Whenever this occurs the user will be advised on any specific requirements for the text input to be provided.<br>
+![Text Input Required]()
+- Option Selection Required<br>
+There are 4 occassions in this project where the user is presented with options to choose from (Log In/Register, Main Menu, View Habit Options and Log Today's Habits). For these functions the user will be advised to use their arrow keys to navigate the options, and to press enter to select.<br>
+![Option Selection Required]()<br>
+- Multiple Choice Selection<br>
+When the user selects to log their habits for the current date, they will be presented with a list of the habits saved specifically for that user. They will be given instructions on how to navigate the options presented, how to select which option to log, how to toggle the options and how to invert the options.<br>
+![Multiple Choice Selection]()<br>
+
 ##### Libraries Imported
 
 I have imported a number of libraries within this project to improve the overall functionality and user experience. Details for the specific libraries included are show [here](#libraries).
