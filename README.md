@@ -44,13 +44,26 @@ You can access the live application ![here!](https://habit-tracker-tb-f3dc632b7d
 
 ### Technologies
 
+The main technologies I have utilised within this project include:<br>
+1. Heroku- The project has been deployed on Heroku. See [Deployment](#deployment) to see the guide for deployment.
+2. Code Anywhere- I have used CodeAnywhere as the IDE to edit and push changes  for the project.
+3. Python- This project has been written using the Python language.
+4. JavaScript- The script required to run the Code Institute mock terminal is done using JavaScript
+5. Google Cloud- In order to enable the API's required for this project I have used Google Cloud.
+6. Google Sheets- Storage of the data used within this project is contained within a Google Sheets worksheet.
+7. Github- After code has been pushed it has been stored within Github.
+8. ChatGPT 3.5- To assist with debugging I have utilised the [open.AI ChatGPT](https://openai.com/blog/chatgpt) model.
+9. Visual Paradigm- I have used this website to create the flowchart for my project. Click [here](#logic-flow) to view the flowchart.
+
 #### Libraries
 
 ### Testing
 
 ### Deployment
 
-### Acknowledgements
+### Credits
+
+#### Acknowledgements
 
 I would like to thank my mentor Luke who has continued to help me with my coding journey, offering constructive feedback to make the most of my new skills in learning Python.<br>
 
