@@ -40,7 +40,7 @@ You can access the live application [here!](https://habit-tracker-tb-f3dc632b7d9
 
 ### Features
 
-### Future Enhancements
+#### Future Enhancements
 
 ### Technologies
 
@@ -68,9 +68,46 @@ The following Libraries have been imported for this project:<br>
 
 ### Testing
 
+### Bugs
+
 ### Deployment
 
+#### Version Control
+
+I have created this project using the Code Anywhere IDE with all changes being pushed to the github repository named 'Habit_Tracker'.<br>
+
+The following git commands have been utilised throughout the development process in order to push changes to the above mentioned respository: <br>
+
+- git add - This command will add the file(s) to the staging area before they are commited to the local repository.
+- git commit -m "message" - This command commits any changes to the local repository queue in readiness to be pushed. Details of the changes made will replace the "message" section of the command.
+- git push - This is the final command used to push all committed entries to the repository on github.
+
+#### Local Cloning
+
+#### Google Sheets Set Up
+
+#### Heroku Deployment
+
+This project has been deployed to [Heroku](), this being a Platform as a Service (PaaS). This enables developers the ability to build, run and operate applications in the cloud as is required as per the [Project Goals](#project-goals) for this project.<br>
+
+In order to deploy the project you must follow these steps: <br>
+
+1. First ensure you have logged in, or signed up for an account with Heroku. Once logged in you can continue to follow the next steps.
+2. From the Dashboard page you will need to select *New* located in the top-right corner. From here select *Create new app* from the drop down menu.
+3. You will be asked to create a name for the application. All application names must be unique accross the entire Heroku network, for example I have used 'habit-tracker-tb' as this represents the project name for easy reference, alongside my initials. Once you have created your name you can confirm the primary language used as *Python*. Lastly you will need to choose a region closest to you (EU or USA), and then you can select *Create App*.
+4. We now need to amend the settings, specially the environment variables, to allow the application to run correctly once deployed. Go to the *Settings* tab and then *Reveal Config Vars*. You will see two input boxes, the first for KEY and a second for VALUE. The following variables will need to be added:<br>
+    - KEY = PORT , VALUE = 8000
+    - KEY = CREDS , VALUE = *Here you will need to copy and paste the contents of the creds.json file you have created in the [Google Sheets Set Up](#google-sheets-set-up) section above*
+Once the above has been updated, select *Add*
+5. After adding the above variables, scroll down to *Buildpacks* and select *Add buildpack*. Heroku will give you a few options you can select from using their officially supported packs, for this project we will need the *python* and *node.js* packs. The order in which you show the buildpacks is important. **For this reason make sure to select Python first, and then Node.js.** Don't worry if you get these wrong, after adding you can drag the packs to rearrange their order. Don't forget to click *Save Changes*.
+6. Now that we have set up the variables, and added our buildpacks we can start the process of deploying the project. Go back to the top of the page and select the *Deploy* tab. Go to the *Deployment Method* section and select *GitHub*, where you can then select to *Connect to GitHub*. You will need to search for the repository name in the repo-name section and select *Connect* once the correct repository has been found. **Go back to [Local Cloning](#local-cloning) if you have not already cloned the GitHub repository.**
+7. We are now ready to deploy, so scroll down the page until you see *Manual Deploys* where you will want to select *Deploy Branch*. This will now start to create the application being deployed- this can take some time so please be patient! When ready you will see an option to *View* which will open the deployed project in a new tab showing the project within a mock terminal.
+
+If you have followed all above steps correctly the project will now be connected and deployed to Heroku.
+
 ### Credits
+
+Within this section I have noted the resources used when building the project, and acknowledgements towards those who have supported me in the journey.
 
 #### Resources
 
@@ -82,6 +119,8 @@ Given the complexity of this project I have made use of a number of resources to
 4. [Pypi- bcrypt](https://pypi.org/project/bcrypt/) - Once I had made the decision to use the bcyrpt enscryption library, I have referred to this guidance to assist in writing the code I needed to encrypt the passwords input by a user.
 5. [W3Resource- Validations](https://www.w3resource.com/python-exercises/python-conditional-exercise-15.php) - Towards the end of the project I decided I wanted to also include a validation function for both the username and password a user can use. This guidance helped me to understand the logic that would be required when validating a password, which I was then able to use as a reference point to also validate the username input.
 6. [Scaler- Clear Screen](https://www.scaler.com/topics/how-to-clear-screen-in-python/) - I have made use of this guidance when creating the functions to clear the terminal screen at certain stages within the project, whilst also applying a time delay so that any printed messages can still be read by a user before the terminal is cleared.
+7. [gspread directory](https://docs.gspread.org/en/latest/oauth2.html) - When running my code, I noticed a deprication warning would appear to note "client_factory will be replaced by gspread.hhtp_client types". I have used this guidance to determine the reason for this warning, which appears to relate to the version of gspread being used which utilises 'oauth2client' which has since been deprecated by Google in favour of 'google-auth'. I have referred to this warning in the above section for [Bugs](#bugs) to note how I have chosen to address this.
+8. [Stack Overflow- Deprication Warnings](https://stackoverflow.com/questions/879173/how-to-ignore-deprecation-warnings-in-python) - I have referred to this guidance when trying to resolve the deprecation warning as noted above. Please see the [Bugs](#bugs) section for further details on the method chosen.
 
 #### Acknowledgements
 
