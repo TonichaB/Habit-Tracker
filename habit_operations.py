@@ -144,7 +144,8 @@ class HabitOperations:
                 "Log Today's Habits",
                 "View Habits",
                 "Log Out",
-                "Delete Account"]
+                "Delete Account",
+                "Quit"]
             ).ask()
 
         # Update password option
@@ -191,3 +192,9 @@ class HabitOperations:
             else:
                 print("You have confirmed no, returning to Main Menu")
                 self.main_options()
+
+        # Use can exit the application completely
+        elif choice == "Quit":
+            print("Quiting the application...")
+            self.operation_functions.clear_and_exit()
+            return

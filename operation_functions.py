@@ -2,6 +2,7 @@ import questionary
 from datetime import datetime, timedelta
 import bcrypt
 import re
+import os
 
 
 class Functions:
@@ -434,3 +435,11 @@ class Functions:
 
         # Password meets all requirements
         return True
+
+    def clear_terminal(self):
+        os.system('cls' if os.name == 'nt' else 'clear')
+
+    def clear_and_exit(self):
+        self.clear_terminal()
+        print("Thank you for using the Habit Tracker. Goodbye!")
+        raise SystemExit
