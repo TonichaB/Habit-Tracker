@@ -3,7 +3,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 import questionary
 import questionary as qt
-from habit_operations import HabitOperations
+from habit_operations import HabitOperations, Functions
 import bcrypt
 
 
@@ -25,7 +25,7 @@ class HabitTracker:
         self.credentials_worksheet = self.SHEET.worksheet('user_accounts')
         self.habits_worksheet = self.SHEET.worksheet('habits_list')
         self.logged_in_user = ""
-        self.habit_operations = None
+        self.habit_operations = HabitOperations(self)
 
     # defining the log in function
     def login(self):
@@ -49,7 +49,7 @@ class HabitTracker:
                         password.encode('utf-8'),
                         stored_password_hash.encode('utf-8'))):
                     print("Login successful!")
-
+                    self.habit_operations.set_functions(Functions(self))
                     # Proceed to Main Menu
                     self.habit_operations.main_options()
                     break
@@ -117,4 +117,5 @@ class HabitTracker:
             if self.login():
                 self.habit_operations.main_options()
         elif selected_option == "Register":
+            from habit_operations import HabitOperations
             self.register()

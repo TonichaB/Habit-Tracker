@@ -4,9 +4,9 @@ import bcrypt
 
 
 class Functions:
-    def __init__(self, habit_tracker, habit_operations):
-        self.habit_tracker = habit_tracker
+    def __init__(self, habit_operations, habit_tracker):
         self.habit_operations = habit_operations
+        self.habit_tracker = habit_tracker
 
     def delete_account(self):
         username_column = (

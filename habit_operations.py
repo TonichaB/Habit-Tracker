@@ -3,13 +3,16 @@ from operation_functions import Functions
 
 
 class HabitOperations:
-    def __init__(self, habit_tracker, operation_functions):
+    def __init__(self, habit_tracker):
         self.habit_tracker = habit_tracker
+        self.operation_functions = Functions(self, habit_tracker)
+
+    def set_functions(self, operation_functions):
         self.operation_functions = operation_functions
 
     # Main Page Functions
     def main_options(self):
-
+        from habit_tracker import HabitTracker
         print(
             f'Welcome {self.habit_tracker.logged_in_user} '
             f'to your habit tracker!'

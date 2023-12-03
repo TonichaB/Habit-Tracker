@@ -1,6 +1,6 @@
 # Habit Tracker
 
-Welcome to my Habit Tracker, a Python-based command line application allowing users to create, track and view habits to promote a healthier lifestyle.<br>
+Welcome to my Habit Tracker, a Python-based terminal application allowing users to create, track and view habits to promote a healthier lifestyle.<br>
 You can access the live application ![here!](https://habit-tracker-tb-f3dc632b7d99.herokuapp.com/)
 
 ## Contents
