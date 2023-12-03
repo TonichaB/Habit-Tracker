@@ -206,7 +206,9 @@ class Functions:
         # Display the list of saved habits
         habit_options = self.habit_tracker.habits_worksheet.col_values(1)
         user_habits = [
-            habit for habit in habit_options if habit.startswith(
+            habit.split('_', 1)[1]
+            for habit in habit_options
+            if habit.startswith(
                 self.habit_tracker.logged_in_user
             )
         ]
@@ -221,11 +223,13 @@ class Functions:
                 "Please choose a habit to change the frequency:",
                 choices=user_habits).ask()
 
-            # Extract the habit name without the username prefix
-            habit_name = f"{self.habit_tracker.logged_in_user}_{habit_to_change}"
-
             # Find the index of habit within the list
-            habit_index = habit_options.index(habit_name)
+            habit_index = habit_options.index(
+                f"{self.habit_tracker.logged_in_user}_{habit_to_change}"
+            )
+
+            # Extract the habit name without username prefix
+            habit_name = habit_to_change
 
             # User chooses a new frequency
             new_frequency = questionary.select(
