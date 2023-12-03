@@ -23,6 +23,10 @@ class HabitOperations:
                 print("Invalid username format. Please try again")
                 continue
 
+            if not self.operation_functions.validate_password(password):
+                print("Invalid password format. Please try again.")
+                continue
+
             username_column = (
                 self.habit_tracker.credentials_worksheet.col_values(1)
             )
