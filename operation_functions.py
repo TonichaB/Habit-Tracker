@@ -148,7 +148,7 @@ class Functions:
     def update_password(self):
         while True:
             # Asks user to enter current details
-            user = questionary.text("Please confirm your username:").ask()
+            user = self.habit_tracker.logged_in_user
             old_password = (
                 questionary.password(
                     "Please confirm your current password:"
@@ -163,7 +163,7 @@ class Functions:
             )
 
             # If details are correct, proceed to allow password change
-            if user in username_column and old_password in password_column:
+            if user in username_column:
                 index = username_column.index(user)
                 stored_password_hash = password_column[index]
 

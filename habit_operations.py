@@ -35,6 +35,7 @@ class HabitOperations:
                         stored_password_hash.encode('utf-8'))):
                     print("Login successful!")
 
+                    self.habit_tracker.logged_in_user = username
                     # Proceed to Main Menu
                     self.main_options()
                     break
@@ -84,7 +85,7 @@ class HabitOperations:
                     next_row, 2, hashed_password.decode('utf-8')
                 )
 
-                self.logged_in_user = new_user
+                self.habit_tracker.logged_in_user = new_user
 
                 print("Registration successful!")
                 # Once the credentials are confirmed the User
@@ -114,6 +115,7 @@ class HabitOperations:
                 "Change Habit Frequency",
                 "Log Today's Habits",
                 "View Habits",
+                "Log Out",
                 "Delete Account"]
             ).ask()
 
