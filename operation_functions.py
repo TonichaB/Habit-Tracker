@@ -221,8 +221,11 @@ class Functions:
                 "Please choose a habit to change the frequency:",
                 choices=user_habits).ask()
 
+            # Extract the habit name without the username prefix
+            habit_name = f"{self.habit_tracker.logged_in_user}_{habit_to_change}"
+
             # Find the index of habit within the list
-            habit_index = user_habits.index(habit_to_change)
+            habit_index = habit_options.index(habit_name)
 
             # User chooses a new frequency
             new_frequency = questionary.select(
@@ -232,7 +235,7 @@ class Functions:
 
             print(
                 f'''You have selected to change:
-                {habit_to_change} to {new_frequency}'''
+                {habit_name} to {new_frequency}'''
             )
             answer = questionary.confirm("Is this correct?").ask()
 
@@ -241,9 +244,11 @@ class Functions:
                 self.habit_tracker.habits_worksheet.update_cell(
                     habit_index + 1, 2, new_frequency
                 )
-                print(f"{habit_to_change} has been updated to {new_frequency}")
+                print(f"{habit_name} has been updated to {new_frequency}")
+
             else:
                 print("Habit frequency has not been updated")
+            self.habit_operations.main_options()
 
     def log_habits(self):
         print("What have you achieved today?")
