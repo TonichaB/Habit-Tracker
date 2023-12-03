@@ -80,7 +80,7 @@ I have created this project using the Code Anywhere IDE with all changes being p
 
 The following git commands have been utilised throughout the development process in order to push changes to the above mentioned respository: <br>
 
-- git add - This command will add the file(s) to the staging area before they are commited to the local repository.
+- git add . - This command will add the file(s) to the staging area before they are commited to the local repository.
 - git commit -m "message" - This command commits any changes to the local repository queue in readiness to be pushed. Details of the changes made will replace the "message" section of the command.
 - git push - This is the final command used to push all committed entries to the repository on github.
 
@@ -97,9 +97,27 @@ The project will now be cloned to your local machine for use. If you wish to run
 
 #### Google Sheets Set Up
 
+This project makes use of Google Sheets to store all data required. Please see the following steps to create your own copy of the worksheet used and how to connect this within the cloned repository.<br>
+
+1. If you do not already have an account with Google you will need to sign up [here](https://accounts.google.com/Signup). Make sure to use a personal account rather than any shared business accounts to keep the data secure.
+2. In order to maintain the security of the data for my project, I have restricted access to the original sheet. The credentials also will not be included in the cloned repository, therefore you will need to create a new sheet. **Make sure the name of the sheet is saved as *habit_tracker* so this can be correctly linked to the cloned repository.**
+3. Below shows how the sheet needs to be set up for the application to run smoothly:<br>
+User Accounts Worksheet: <br>
+![User Accounts Worksheet]()<br>
+Habits List Worksheet: <br>
+![Habits List Worksheet]()<br>
+Habits Log Worksheet: <br>
+![Habits Log Worksheet]()<br>
+4. Once you have the sheet set up correctly, you will need to activate the API credentials. A detailed guide to set this up can be found [here](https://docs.gspread.org/en/latest/oauth2.html). As part of this guide you will create a JSON file which should be downloaded as saved to your local machine, we will need this file for the next step.
+5. Now that you have created and saved your JSON credentials file, we want to download this to the root of the project. To do this drag the file from your downloads(or wherever you have this saved locally) directly into the IDE workspace. Make sure to re-name this file as *creds.json*.
+6. Within the newly saved *creds.json* file locate the client_email and copy the value shown (**do not include the quotes**). Now return to your sheet and select the *Share* button to the top-right. Paste the copied client email and ensure *Editor* is selected, and untick the *Notify People* option. You can now click *Share* which will allow the IDE workspace to now access and edit the sheet.
+7. As the creds.json file contains sensitive information, we do not want this file to be pushed to the repository. To prevent this go to your .gitignore file within the IDE workspace and add creds.json on a new line. You can now save the file using CTRL-S, and push the changes using the [Version Control](#version-control) commands noted above.<br>
+
+The cloned repository already contains the required code to connect the project to the sheet created in Google Sheets, so as long as you have followed the above steps correctly this will run smoothly when deployed to Heroku (see below for [Heroku Deployment](#heroku-deployment)).
+
 #### Heroku Deployment
 
-This project has been deployed to [Heroku](), this being a Platform as a Service (PaaS). This enables developers the ability to build, run and operate applications in the cloud as is required as per the [Project Goals](#project-goals) for this project.<br>
+This project has been deployed to [Heroku](https://dashboard.heroku.com/apps), this being a Platform as a Service (PaaS). This enables developers the ability to build, run and operate applications in the cloud as is required as per the [Project Goals](#project-goals) for this project.<br>
 
 In order to deploy the project you must follow these steps: <br>
 
