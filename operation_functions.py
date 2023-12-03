@@ -259,7 +259,9 @@ class Functions:
         # Display saved habits
         habit_options = self.habit_tracker.habits_worksheet.col_values(1)
         user_habits = [
-            habit for habit in habit_options if habit.startswith(
+            habit.split('_', 1)[1]
+            for habit in habit_options
+            if habit.startswith(
                 self.habit_tracker.logged_in_user
             )
         ]
@@ -282,15 +284,14 @@ class Functions:
 
             # Update the spreadsheet with logged habits
             for habit in habits_completed:
-                habit_index = habit_options.index(habit)
                 # This will extract habit name without username present
-                habit_name = habit_index.split('_', 1)[1]
                 log_worksheet.append_row([
                     self.habit_tracker.logged_in_user,
-                    habit_name,
+                    habit,
                     current_date
                 ])
-                print("Habits logged succesfully for today!")
+                print(f"{habits_completed} logged succesfully for today!")
+                self.habit_operations.main_options()
 
     def view_habits(self):
         view_options = questionary.select(
