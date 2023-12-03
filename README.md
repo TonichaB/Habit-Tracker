@@ -7,17 +7,30 @@ You can access the live application [here!](https://habit-tracker-tb-f3dc632b7d9
 - [Site Goals](#site-goals)
     - [Project Goals](#project-goals)
     - [Project Outcomes](#project-outcomes)
+        - [Creation of a Data Model](#creation-of-a-data-model)
+        - [Features](#features)
+            - [Existing Features](#existing-features)
+            - [Future Enhancements](#future-enhancements)
+        - [Handling of User Input](#handling-of-user-input)
+        - [User Options and Instructions](#user-options-and-instructions)
+        - [Libraries Imported](#libraries-imported)
 - [User Experience](#user-experience)
     - [Target Audience](#target-audience)
     - [User Expectations](#user-expectations)
     - [User Stories](#user-stories)
 - [Logic Flow](#logic-flow)
-- [Future Enhancements](#future-enhancements)
 - [Technologies](#technologies)
     - [Libraries](#libraries)
 - [Testing](#testing)
+- [Bugs](#bugs)
 - [Deployment](#deployment)
-- [Acknowledgements](#acknowledgements)
+    - [Version Control](#version-control)
+    - [Local Cloning](#local-cloning)
+    - [Google Sheets Set Up](#google-sheets-set-up)
+    - [Heroku Deployment](#heroku-deployment)
+- [Credits](#credits)
+    - [Resources](#resources)
+    - [Acknowledgements](#acknowledgements)
 
 <br>
 
@@ -28,8 +41,8 @@ You can access the live application [here!](https://habit-tracker-tb-f3dc632b7d9
 For this project, I had the following goals to be met:<br>
 
 - Creation of a Data Model
-- Making Data Accessible
 - Features
+- Handling of User Input
 - User Options and Instructions
 - Libraries Imported
 
@@ -50,9 +63,35 @@ There is a worksheet named 'habit_log' that stores the user habits (username, ha
 4. Object-Oriented Design:<br>
 By utilising classes for 'HabitTracker', 'HabitOperations', and 'Functions' I have been able to encapsulate the behaviour relating to the user operations, habits and general functions.
 
-##### Making Data Accesible
-
 ##### Features
+
+###### Existing Features
+
+Within this project I have featured a number of functions that addressses a users expectations when interacting with the application. <br>
+
+- Log In
+- Register
+- Main Menu
+- Update Password
+- Add New Habit
+- Delete Habit
+- Change Habit Frequency
+- Log Today's Habits
+- View Habits
+- View Today's Habits
+- View Habits for a Selected Period
+- Log Out
+- Delete Account
+- Quit
+
+###### Future Enhancements
+
+Whilst I am happy with the current features within this project, with additional time I could include:<br>
+
+- Habit Examples- If a user is struggling to think of a habit to track, a new function could include the ability to view examples of habits that other users have saved (making sure not to include the user details associated with the saved habit) that they could then select to track themselves.
+- Fix Deprication Warning- Whilst for this project it was not necessary to fix the Deprication warning in relation to the gspread library, with more time I would refactor the code to utilise 'google-auth' over 'oauth2client'. Please see [Bugs](#bugs) below noting how I have chosen to address this in the meantime.
+
+##### Handling of User Input
 
 ##### User Options and Instructions
 
@@ -69,8 +108,6 @@ I have imported a number of libraries within this project to improve the overall
 #### User Stories
 
 ### Logic Flow
-
-#### Future Enhancements
 
 ### Technologies
 
