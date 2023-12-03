@@ -325,8 +325,8 @@ class Functions:
         # FIlter the entries based on user and date
         filtered_entries = [
             entry for entry in all_entries
-            if len(entry) >= 3 and 
-            entry[0] == username and 
+            if len(entry) >= 3 and
+            entry[0] == username and
             entry[2] == current_date
         ]
 
@@ -341,20 +341,25 @@ class Functions:
         self.habit_operations.main_options()
 
     def view_habits_in_period(self):
-        # Get the start and end date from the user
-        start_date_str = questionary.text(
-            "Plese enter a start date (YYYY-MM-DD)"
-        ).ask()
-        end_date_str = questionary.text(
-            "Please enter an end date (YYYY-MM-DD"
-        ).ask()
+        # Initialise start and end date variables
+        start_date = None
+        end_date = None
 
-        try:
-            start_date = datetime.strptime(start_date_str, '%Y-%m-%d')
-            end_date = datetime.strftime(end_date_str, '%Y-%m-%d')
-        except ValueError:
-            print("Invalid date format. Please use YYYY-MM-DD.")
-            return
+        while True:
+            # Get the start and end date from the user
+            start_date_str = questionary.text(
+                "Plese enter a start date (YYYY-MM-DD)"
+            ).ask()
+            end_date_str = questionary.text(
+                "Please enter an end date (YYYY-MM-DD"
+            ).ask()
+
+            try:
+                start_date = datetime.strptime(start_date_str, '%Y-%m-%d')
+                end_date = datetime.strptime(end_date_str, '%Y-%m-%d')
+                break
+            except ValueError:
+                print("Invalid date format. Please use YYYY-MM-DD.")
 
         # Get the username to filter the habits
         username = self.habit_tracker.logged_in_user
@@ -367,17 +372,7 @@ class Functions:
             f'{start_date.strftime("%Y-%m-%d")}:'
             f'{end_date.strftime("%Y-%m-%d")}'
         )
-        user_entries = log_worksheet.get_all_values(
-            value_render_option='FORMATTED_VALUE',
-            dateTimeRenderOption='FORMATTED_STRING',
-            datetime_representation='SERIAL_NUMBER',
-            majorDimension='ROWS',
-            date_time_render_option='FORMATTED_STRING',
-            ranges=f'A:C',
-            include_tailing_empty_rows=False,
-            valueRenderOption='UNFORMATTED_VALUE',
-            params={'valueRenderOption': 'FORMATTED_VALUE'}
-        )
+        user_entries = log_worksheet.get_all_values()
 
         # Filter entries for user and date range
         filtered_entries = [
@@ -395,3 +390,4 @@ class Functions:
                 print(f"Date: {entry[2]}, Habit: {entry[1]}")
         else:
             print("There are no habits logged within this time period.")
+        self.habit_operations.main_options()
