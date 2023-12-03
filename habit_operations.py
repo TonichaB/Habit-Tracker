@@ -18,6 +18,11 @@ class HabitOperations:
                 "Please confirm your password:"
             ).ask()
 
+            # Validate the username format
+            if not self.operation_functions.validate_username(username):
+                print("Invalid username format. Please try again")
+                continue
+
             username_column = (
                 self.habit_tracker.credentials_worksheet.col_values(1)
             )
@@ -58,6 +63,11 @@ class HabitOperations:
             username_column = (
                 self.habit_tracker.credentials_worksheet.col_values(1)
             )
+
+            # Validate the username format
+            if not self.operation_functions.validate_username(username):
+                print("Invalid username format. Please try again")
+                continue
 
             if new_user in username_column:
                 # If the username exists the user will need

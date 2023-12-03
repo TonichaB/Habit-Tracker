@@ -1,7 +1,7 @@
 import questionary
 from datetime import datetime, timedelta
 import bcrypt
-
+import re
 
 class Functions:
     def __init__(self, habit_operations, habit_tracker):
@@ -388,3 +388,12 @@ class Functions:
         else:
             print("There are no habits logged within this time period.")
         self.habit_operations.main_options()
+
+    def validate_username(self,username):
+        """ 
+        Used to validate the format of the username.
+        Will return as true if the username is valid.
+        Will return false if the username is invalid
+        """
+        # Validation logic.
+
