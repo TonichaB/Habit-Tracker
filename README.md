@@ -72,6 +72,8 @@ The following Libraries have been imported for this project:<br>
 
 ### Deployment
 
+The following sections explain how this project has been deployed.
+
 #### Version Control
 
 I have created this project using the Code Anywhere IDE with all changes being pushed to the github repository named 'Habit_Tracker'.<br>
@@ -83,6 +85,15 @@ The following git commands have been utilised throughout the development process
 - git push - This is the final command used to push all committed entries to the repository on github.
 
 #### Local Cloning
+
+In order to clone this repository to be used locally please follow these steps:<br>
+
+1.  At the top of this page select *<> Clone* to open the drop down menu, and make sure that *HTTPS* is selected.
+2. Copy the repository link shown to the clipboard.
+3. Open your IDE of choice (**git must be installed**).
+4. Type the following into the IDE terminal: 'git clone *paste the copied git url*' <br>
+
+The project will now be cloned to your local machine for use. If you wish to run the project within your terminal run the following command: '*python run.py*'
 
 #### Google Sheets Set Up
 
@@ -101,7 +112,7 @@ In order to deploy the project you must follow these steps: <br>
 Once the above has been updated, select *Add*
 5. After adding the above variables, scroll down to *Buildpacks* and select *Add buildpack*. Heroku will give you a few options you can select from using their officially supported packs, for this project we will need the *python* and *node.js* packs. The order in which you show the buildpacks is important. **For this reason make sure to select Python first, and then Node.js.** Don't worry if you get these wrong, after adding you can drag the packs to rearrange their order. Don't forget to click *Save Changes*.
 6. Now that we have set up the variables, and added our buildpacks we can start the process of deploying the project. Go back to the top of the page and select the *Deploy* tab. Go to the *Deployment Method* section and select *GitHub*, where you can then select to *Connect to GitHub*. You will need to search for the repository name in the repo-name section and select *Connect* once the correct repository has been found. **Go back to [Local Cloning](#local-cloning) if you have not already cloned the GitHub repository.**
-7. We are now ready to deploy, so scroll down the page until you see *Manual Deploys* where you will want to select *Deploy Branch*. This will now start to create the application being deployed- this can take some time so please be patient! When ready you will see an option to *View* which will open the deployed project in a new tab showing the project within a mock terminal.
+7. We are now ready to deploy, so scroll down the page until you see *Manual Deploys* where you will want to select *Deploy Branch*. This will now start to create the application being deployed- this can take some time so please be patient! When ready you will see an option to *View* which will open the deployed project in a new tab showing the project within a mock terminal.<br>
 
 If you have followed all above steps correctly the project will now be connected and deployed to Heroku.
 
