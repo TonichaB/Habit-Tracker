@@ -3,6 +3,7 @@ from datetime import datetime, timedelta
 import bcrypt
 import re
 import os
+import time
 
 
 class Functions:
@@ -443,3 +444,7 @@ class Functions:
         self.clear_terminal()
         print("Thank you for using the Habit Tracker. Goodbye!")
         raise SystemExit
+
+    def clear_with_delay(self, delay_seconds=3):
+        time.sleep(delay_seconds)
+        self.habit_operations.clear_terminal()
