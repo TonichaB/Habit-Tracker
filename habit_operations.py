@@ -162,3 +162,4 @@ class HabitOperations:
                 self.operation_functions.delete_account()
             else:
                 print("You have confirmed no, returning to Main Menu")
+                self.main_options()
