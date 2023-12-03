@@ -390,6 +390,7 @@ class Functions:
             print("There are no habits logged within this time period.")
         self.habit_operations.main_options()
 
+    # Function to validate username input
     def validate_username(self, username):
         """
         Used to validate the format of the username.
@@ -408,3 +409,10 @@ class Functions:
             return False
 
         return True
+
+    def validate_password(self, password):
+        """
+        Used to validate the password format.
+        Will return true if password is valid
+        Will return false if the password is invalid
+        """

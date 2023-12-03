@@ -80,28 +80,42 @@ class HabitOperations:
                     .ask()
                 )
 
-                # Use bcrypt to hash the password
-                hashed_password = bcrypt.hashpw(
-                    new_password.encode('utf-8'),
-                    bcrypt.gensalt()
-                )
+                # Validate the password format
+                if not self.operation_functions.validate_password(
+                    new_password
+                ):
+                    print("Invalid password format. Please try again")
+                    continue
 
-                # Add the new user's credentials to the next available row.
-                next_row = len(username_column) + 1
-                self.habit_tracker.credentials_worksheet.update_cell(
-                    next_row, 1, new_user
-                )
-                self.habit_tracker.credentials_worksheet.update_cell(
-                    next_row, 2, hashed_password.decode('utf-8')
-                )
+                # Use the validated username and password
+                if (
+                    self.operation_functions.validate_username(new_user)
+                    and
+                    self.operation_functions.validate_password(new_password)
+                ):
 
-                self.habit_tracker.logged_in_user = new_user
+                    # Use bcrypt to hash the password
+                    hashed_password = bcrypt.hashpw(
+                        new_password.encode('utf-8'),
+                        bcrypt.gensalt()
+                    )
 
-                print("Registration successful!")
-                # Once the credentials are confirmed the User
-                # can start to build their habits
-                self.operation_functions.new_habit()
-                break
+                    # Add the new user's credentials to the next available row.
+                    next_row = len(username_column) + 1
+                    self.habit_tracker.credentials_worksheet.update_cell(
+                        next_row, 1, new_user
+                    )
+                    self.habit_tracker.credentials_worksheet.update_cell(
+                        next_row, 2, hashed_password.decode('utf-8')
+                    )
+
+                    self.habit_tracker.logged_in_user = new_user
+
+                    print("Registration successful!")
+                    # Once the credentials are confirmed the User
+                    # can start to build their habits
+                    self.operation_functions.new_habit()
+                    break
 
     # Main Page Functions
     def main_options(self):
