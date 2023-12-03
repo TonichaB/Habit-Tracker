@@ -416,3 +416,21 @@ class Functions:
         Will return true if password is valid
         Will return false if the password is invalid
         """
+
+        # Password should contain no spaces
+        if ' ' in password:
+            return False
+
+        # Password needs to have at least 1 uppercase,
+        # 1 lowercase, and 1 special character
+        if not re.search(r'[A-Z]', password) \
+                or not re.search(r'[a-z]', password) \
+                or not re.search(r'[!@#$%^&*()-_+=]', password):
+            return False
+
+        # Only allow alphanumeric characters
+        if not password.isalnum():
+            return False
+
+        # Password meets all requirements
+        return True
