@@ -104,7 +104,8 @@ class Functions:
                 self.habit_tracker.habits_worksheet.col_values(1)
             )
 
-            if ex_habit in habit_options:
+            habit_name = f"{self.habit_tracker.logged_in_user}_{ex_habit}"
+            if habit_name in habit_options:
                 print("Habit has been confirmed.")
 
                 # Before deleting user is asked whether they are sure
@@ -116,8 +117,8 @@ class Functions:
                 if answer:
                     print("You have selected yes")
                     habit_index = (
-                        self.habit_tracker.habit_options.index(
-                            ex_habit
+                        habit_options.index(
+                            habit_name
                         ) + 1
                     )
                     self.habit_tracker.habits_worksheet.delete_rows(
@@ -141,7 +142,7 @@ class Functions:
 
             # If the habit has been typed incorrectly the user is
             # notified and will be asked to enter habit details again
-            elif ex_habit not in habit_options:
+            elif habit_name not in habit_options:
                 print("Sorry we can't locate this habit, please try again")
                 print("Please note habits are case sensitive!")
 
