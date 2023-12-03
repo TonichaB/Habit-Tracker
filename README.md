@@ -12,7 +12,6 @@ You can access the live application [here!](https://habit-tracker-tb-f3dc632b7d9
     - [User Expectations](#user-expectations)
     - [User Stories](#user-stories)
 - [Logic Flow](#logic-flow)
-- [Features](#features)
 - [Future Enhancements](#future-enhancements)
 - [Technologies](#technologies)
     - [Libraries](#libraries)
@@ -26,7 +25,40 @@ You can access the live application [here!](https://habit-tracker-tb-f3dc632b7d9
 
 #### Project Goals
 
+For this project, I had the following goals to be met:<br>
+
+- Creation of a Data Model
+- Making Data Accessible
+- Features
+- User Options and Instructions
+- Libraries Imported
+
 #### Project Outcomes
+
+The above mentioned Project Goals have been addressed as per the below.
+
+##### Creation of a Data Model
+
+Through the use of Google Sheets and the logic contained within the project code I have created a structured representation of the data and relationships. Each worksheet within the Google Sheet corresponds to a entity type, with the rows within the worksheets representing instances of those entities. The data model can be broken down as follows:<br>
+
+1. User Accounts:<br>
+There is a worksheet named 'user_accounts' that stores the user credentials (username and hashed password). Each row within this worksheet represents a user account.
+2. Habits:<br>
+There is a worksheet named 'habits_list' that stores the information about the habits (habit name and frequency). Each row wihtin this worksheet represents a habit, which is associated with a specific user.
+3. Habit Log:<br>
+There is a worksheet named 'habit_log' that stores the user habits (username, habit name, and date the habit was logged). Each row within this worksheet represents a instance of a logged habit.
+4. Object-Oriented Design:<br>
+By utilising classes for 'HabitTracker', 'HabitOperations', and 'Functions' I have been able to encapsulate the behaviour relating to the user operations, habits and general functions.
+
+##### Making Data Accesible
+
+##### Features
+
+##### User Options and Instructions
+
+##### Libraries Imported
+
+I have imported a number of libraries within this project to improve the overall functionality and user experience. Details for the specific libraries included are show [here](#libraries).
 
 ### User Experience
 
@@ -37,8 +69,6 @@ You can access the live application [here!](https://habit-tracker-tb-f3dc632b7d9
 #### User Stories
 
 ### Logic Flow
-
-### Features
 
 #### Future Enhancements
 
@@ -69,6 +99,8 @@ The following Libraries have been imported for this project:<br>
 ### Testing
 
 ### Bugs
+
+
 
 ### Deployment
 
