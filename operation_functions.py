@@ -441,10 +441,10 @@ class Functions:
         os.system('cls' if os.name == 'nt' else 'clear')
 
     def clear_and_exit(self):
-        self.clear_terminal()
+        self.clear_with_delay()
         print("Thank you for using the Habit Tracker. Goodbye!")
         raise SystemExit
 
     def clear_with_delay(self, delay_seconds=3):
         time.sleep(delay_seconds)
-        self.habit_operations.clear_terminal()
+        self.clear_terminal()
