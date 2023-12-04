@@ -233,6 +233,21 @@ The following Libraries have been imported for this project:<br>
 | TC-012    | View logged habits                               | Display logged habits     | Logged habits displayed to user.            | PASS   |
 | TC-013    | Encrypt password in worksheet                    | Encrypt user password in worksheet |Password input from user is encrypted and saved as hashed password in worksheet| PASS   |
 | TC-014    | Start program                                    | Start up page displays when program run. | Start up page loaded.             | PASS   |
+| TC-015    | Update password with valid credentials          | Password updated successfully      | Password updated successfully        | PASS   |
+| TC-016    | Update password with invalid current password    | Error message displayed             | Error message appears                  | PASS   |
+| TC-017    | Add a new habit with a duplicate name            | Error message displayed             | Error message appears and habit not added | PASS   |
+| TC-018    | Delete a non-existing habit                      | Error message displayed             | Error message appears                  | PASS   |
+| TC-019    | Change habit frequency with an invalid input     | Error message displayed             | Error message appears                  | PASS   |
+| TC-020    | Log today's habits without selecting any         | No data logged                      | No data logged                         | PASS   |
+| TC-021    | View logged habits with no data                  | No data displayed                   | No data displayed                      | PASS   |
+| TC-022    | Delete account with invalid username             | Error message displayed             | Error message appears                  | PASS   |
+| TC-023    | Attempt to log in with incorrect password        | Error message displayed             | Error message appears                  | PASS   |
+| TC-024    | Attempt to log in with a non-existing username   | Error message displayed             | Error message appears                  | PASS   |
+| TC-025    | Register with an empty username                  | Error message displayed             | Error message appears                  | PASS   |
+| TC-026    | Register with an empty password                  | Error message displayed             | Error message appears                  | PASS   |
+| TC-027    | Attempt to change the frequency of a non-existing habit | Error message displayed      | Error message appears                  | PASS   |
+| TC-028    | Log habits with a past date                      | Warning message displayed           | Warning message appears                | PASS   |
+| TC-029    | Quit the application                             | Application exits successfully      | Application exits successfully        | PASS   |
 
 ### Validation
 
