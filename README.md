@@ -198,7 +198,6 @@ The following Libraries have been imported for this project:<br>
 5. datetime - This library has been used to allow the program to pull the current date for the user interaction which is used when logging and viewing tracked habits.
 6. re - This library (which stands for regular expressions) has been used when validating usernames and passwords to ensure the user input matches the requirements set out in the validation functions.
 7. time - This library has been used to create a time delay prior to clearing the terminal so the user can see any printed messages applicable for their actions.
-8. shutup - This library has been used to allow the files to ignore the deprecation warning relating to the gspread library.
 
 ## Testing
 
@@ -217,7 +216,7 @@ Delete Habit Fixed:<br>
 ![Delete Habit Fixed]()<br>
 
 3. Deprecation Warning.<br>
-Part way through the development of the project I noticed a deprecation warning would appear when running the project in the terminal. After looking into the issue being raised in this warning (please see further details within the [Resources](#resources) section below) I was able to determine that the warning would not affect the functionality of the project and therefore I could choose to ignore this warning. I chose to utilise a library within python called 'shutup' which would set the workspace to ignore these warnings. As this would remove any warnings of this type, I chose not to implement this solution until all other aspects of the project had been completed so I would not miss any other warnings that could negatively impact the project.<br>
+Part way through the development of the project I noticed a deprecation warning would appear when running the project in the terminal. After looking into the issue being raised in this warning (please see further details within the [Resources](#resources) section below) I was able to determine that the warning would not affect the functionality of the project and therefore I could choose to ignore this warning. I tried to utilise a library within python called 'shutup' which would set the workspace to ignore these warnings. As this would remove any warnings of this type, I chose not to implement this solution until all other aspects of the project had been completed so I would not miss any other warnings that could negatively impact the project. When looking at the deployed project on Heroku it was unable to process the shutup command and so i have had to keep the warning displayed. The functionality of the project is unaffected by this.<br>
 Deprication Warning:<br>
 ![Deprication Warning]()<br>
 
