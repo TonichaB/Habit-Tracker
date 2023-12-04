@@ -61,11 +61,10 @@ class HabitOperations:
                         password.encode('utf-8'),
                         stored_password_hash.encode('utf-8'))):
                     print("Login successful!")
-
+                    self.operation_functions.clear_with_delay()
                     self.habit_tracker.logged_in_user = username
                     # Proceed to Main Menu
                     self.main_options()
-                    self.operation_functions.clear_with_delay()
                     break
                 else:
                     print("Incorrect password.")

@@ -118,7 +118,8 @@ There are 4 occassions in this project where the user is presented with options 
 
 #### Handling of User Input
 
-Each time a user provides any form of input to the terminal, their response will be validated and the user will be informed whether their input has been successful or not. 
+Each time a user provides any form of input to the terminal, their response will be validated and the user will be informed whether their input has been successful or not. In particular, when a user goes to log in or register, they will see a message providing details of the requirements to be met for both usernames and passwords.<br>
+![Username/Password Message]() 
 
 #### Libraries Imported
 
