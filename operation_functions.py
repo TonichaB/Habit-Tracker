@@ -391,7 +391,7 @@ class Functions:
         while True:
             # Get the start and end date from the user
             start_date_str = questionary.text(
-                "Plese enter a start date (YYYY-MM-DD)"
+                "Please enter a start date (YYYY-MM-DD)"
             ).ask()
             end_date_str = questionary.text(
                 "Please enter an end date (YYYY-MM-DD"
@@ -459,7 +459,6 @@ class Functions:
         Will return true if password is valid
         Will return false if the password is invalid
         """
-        print("Password input:", password)
         # Password should contain no spaces
         if ' ' in password:
             return False
