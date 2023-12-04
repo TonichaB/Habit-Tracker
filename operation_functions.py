@@ -426,7 +426,7 @@ class Functions:
 
         # Check characters set (alphanumeric, spaces and special characters)
         if not all(
-            char.isalnum() or char in "!@#$%^&*()-_+="
+            char.isalnum() or char in "!@#$%^&*()-+="
             for char in username
         ):
             return False
