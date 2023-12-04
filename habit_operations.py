@@ -11,6 +11,22 @@ class HabitOperations:
     # defining the log in function
     def login(self):
         print("You have selected Log In")
+        print(
+            """
+            Please remember your username must be:
+            More than 4 Characters but less than 12
+            Will be case sensitive
+            Cannot include special characters other than !@#$%^&*()-+=
+            """
+        )
+        print(
+            """
+            Please remember your password must:
+            Contain at least 1 Uppercase character
+            Contain at least 1 Lowercase character
+            Contain at least 1 Special character (!@#$%^&*()-_+=)
+            """
+        )
 
         while True:
             username = questionary.text("Please confirm your username:").ask()
@@ -64,7 +80,22 @@ class HabitOperations:
     def register(self):
 
         print("You have selected Register")
-
+        print(
+            """
+            Please note your username must be:
+            More than 4 Characters but less than 12
+            Will be case sensitive
+            Cannot include special characters other than !@#$%^&*()-+=
+            """
+        )
+        print(
+            """
+            Please note your password must:
+            Contain at least 1 Uppercase character
+            Contain at least 1 Lowercase character
+            Contain at least 1 Special character (!@#$%^&*()-_+=)
+            """
+        )
         while True:
             # User creates a new username
             new_user = questionary.text("Please choose your username:").ask()
