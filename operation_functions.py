@@ -20,12 +20,12 @@ class Functions:
             print(f"User {self.habit_tracker.logged_in_user} not found.")
             return
 
-        # find the row index for the logged_in_user
+        # Find the row index for the logged_in_user
         user_index = (
             username_column.index(self.habit_tracker.logged_in_user) + 1
         )
 
-        # delte the row in the user_accounts worksheet
+        # Delete row in the user_accounts worksheet
         self.habit_tracker.credentials_worksheet.delete_rows(user_index)
 
         # Delete all habits linked with the logged_in_user
@@ -33,11 +33,27 @@ class Functions:
         user_habits = [
             habit for habit in habit_options if habit.startswith(
                 self.habit_tracker.logged_in_user
-            )]
+            )
+        ]
 
-        for habit in user_habits:
+        # Iterate through user habits in reverse order to avoid index issues
+        for habit in reversed(user_habits):
             habit_index = habit_options.index(habit) + 1
             self.habit_tracker.habits_worksheet.delete_rows(habit_index)
+
+        # Delete habit log entries for the user
+        log_entries = self.habit_tracker.habit_log_worksheet.get_all_values()
+        filtered_entries = [
+            entry
+            for entry in log_entries
+            if entry[0] != self.habit_tracker.logged_in_user
+        ]
+
+        # Clear the entire habit_log worksheet
+        self.habit_tracker.habit_log_worksheet.clear()
+
+        # Append the filtered entries back to the habit_log worksheet
+        self.habit_tracker.habit_log_worksheet.append_rows(filtered_entries)
 
         print(
             f'Account for {self.habit_tracker.logged_in_user} '

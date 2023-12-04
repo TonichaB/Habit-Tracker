@@ -23,6 +23,7 @@ class HabitTracker:
         self.SHEET = self.GSPREAD_CLIENT.open('habit_tracker')
         self.credentials_worksheet = self.SHEET.worksheet('user_accounts')
         self.habits_worksheet = self.SHEET.worksheet('habits_list')
+        self.habit_log_worksheet = self.SHEET.worksheet('habit_log')
         self.logged_in_user = ""
         self.habit_operations = HabitOperations(self)
 
