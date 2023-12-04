@@ -201,6 +201,20 @@ The following Libraries have been imported for this project:<br>
 
 ## Testing
 
+| Test Case | Description                                      | Expected Outcome          | Actual Outcome            | Status |
+|-----------|--------------------------------------------------|---------------------------|---------------------------|--------|
+| TC-001    | Log in with valid credentials                    | Successful login         | Successful Log In            | PASS   |
+| TC-002    | Log in with invalid username                     | Error message displayed   | Error message appears           | PASS   |
+| TC-003    | Register a new account with valid information    | New account created      | New account created     | PASS   |
+| TC-004    | Attempt to register with an existing username    | Error message displayed   | Error message appears and new username requested           | PASS   |
+| TC-005    | Add a new habit with valid information           | Habit added successfully  | Habit added           | PASS   |
+| TC-006    | Delete an existing habit                         | Habit deleted successfully| Habit deleted.           | PASS   |
+| TC-007    | Change habit frequency                           | Frequency updated        | Relavent frequency updated            | PASS   |
+| TC-008    | Log today's habits with various selections       | Habits logged correctly   | Habits logged and data saved to Google Sheets             | PASS   |
+| TC-009    | Attempt to log habits without selecting any      | Warning message displayed | Warning message appears.           | PASS   |
+| TC-010    | Delete user account                              | Account and data deleted  | Account and associated data deleted.             | PASS   |
+
+
 ## Bugs
 
 When developing the project there were a few bugs I came accross that thankfully I was able to fix to allow the application to run correctly.
