@@ -232,11 +232,19 @@ Password Validation Fix:<br>
 ![Validate Password Fix]()<br>
 
 5. Logging Completed Weekly/Monthly Habits.<br>
-When testing the function to allow the user to log their completed habits for the current date, I noticed that only the daily habits were being saved within the habit_log worksheet.<br>
-
+When testing the function to allow the user to log their completed habits for the current date, I noticed that only the first habit selected was being saved to the habit_log worksheet. I tried to resolve this bug to ensure all selected habits would be saved, however this became too complex and due to time contrainst I chose instead to show each habit one at a time for the user to confirm if they want to log as completed.<br>
+Logging Habits Bug- Terminal View:<br>
+![Log Habit Terminal View]()<br>
+Logging Habits Bug- Worksheet View:<br>
+![Logging Habit Worksheet View]()<br>
+Logging Habits Fix- Terminal View:<br>
+![Logging Habit Terminal View]()<br>
+Logging Habits Fix- Worksheet View:<br>
+![Logging Habit Worksheet View]()<br>
 
 6. Deleted Account- Removing All Stored Habits.<br>
-When testing the function to delete an account, I noticed that not all of the saved habits associated with the user's username were being deleted.<br>
+When testing the function to delete an account, I noticed that not all of the saved habits associated with the user's username were being deleted. To resolve this issue, I amended the function to first filter out the entries relating to other users, then deleting all remaining data (which would only relate to the current user). Once deleted I could then add the filtered entries back into the worksheet, and now all relevant data is removed when calling this function.<br>
+Delete Account Bug:
 ![Delete Account Bug]()
 
 ### Deployment
