@@ -179,10 +179,10 @@ Given the complexity of this project I spend some time planning the logic requir
 As I worked through the project I would come up with new ideas for the logic flow and features to be included, and so the flowchart changed during the development process. Below shows the comparison for the initial flowchart created, and the final flowchart reflecting the current application.<br>
 
 Initial Flowchart:<br>
-![Initial Flowchart](assets/images/Habit%20Tracker%20Flowchart-%20Initial.webp)<br>
+![Initial Flowchart](assets/images/habit-tracker-initial-flowchart.webp)<br>
 
 Final Flowchart:<br>
-![Final Flowchart](assets/images/Final-%20Habit%20Tracker.webp)<br>
+![Final Flowchart](assets/images/final-habit-tracker-flowchart.webp)<br>
 
 [Back to Contents](#contents)
 ---
@@ -272,7 +272,7 @@ Delete Habit Fixed:<br>
 3. Deprecation Warning.<br>
 Part way through the development of the project I noticed a deprecation warning would appear when running the project in the terminal. After looking into the issue being raised in this warning (please see further details within the [Resources](#resources) section below) I was able to determine that the warning would not affect the functionality of the project and therefore I could choose to ignore this warning. I tried to utilise a library within python called 'shutup' which would set the workspace to ignore these warnings. As this would remove any warnings of this type, I chose not to implement this solution until all other aspects of the project had been completed so I would not miss any other warnings that could negatively impact the project. When looking at the deployed project on Heroku it was unable to process the shutup command and so i have had to keep the warning displayed. The functionality of the project is unaffected by this.<br>
 Deprication Warning:<br>
-![Deprication Warning](assets/images/Deprication-warning.webp)<br>
+![Deprication Warning](assets/images/deprication-warning.webp)<br>
 
 4. Password Validation.<br>
 Towards the end of the project, when testing it's functionality, I can accross an issue with the password validation function whereby any password entered by a user in the log in/register functions was not correctly validating the password input provided. Using print statements to assist with debugging, I was able to determine the bug occured due to the requirements for the password being contradictory. Passwords created were allowed to include special characters initially, however were then given a condition to only allow alphanumeric characters. Once the condition for alphanumeric characters was removed the validation function worked as intended and the password was confirmed.<br>
