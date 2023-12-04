@@ -204,16 +204,20 @@ The following Libraries have been imported for this project:<br>
 
 | Test Case | Description                                      | Expected Outcome          | Actual Outcome            | Status |
 |-----------|--------------------------------------------------|---------------------------|---------------------------|--------|
-| TC-001    | Log in with valid credentials                    | Successful login         | Successful Log In            | PASS   |
+| TC-001    | Log in with valid credentials                    | Successful login          | Successful Log In            | PASS   |
 | TC-002    | Log in with invalid username                     | Error message displayed   | Error message appears           | PASS   |
-| TC-003    | Register a new account with valid information    | New account created      | New account created     | PASS   |
+| TC-003    | Register a new account with valid information    | New account created       | New account created     | PASS   |
 | TC-004    | Attempt to register with an existing username    | Error message displayed   | Error message appears and new username requested           | PASS   |
 | TC-005    | Add a new habit with valid information           | Habit added successfully  | Habit added           | PASS   |
 | TC-006    | Delete an existing habit                         | Habit deleted successfully| Habit deleted.           | PASS   |
-| TC-007    | Change habit frequency                           | Frequency updated        | Relavent frequency updated            | PASS   |
+| TC-007    | Change habit frequency                           | Frequency updated         | Relavent frequency updated            | PASS   |
 | TC-008    | Log today's habits with various selections       | Habits logged correctly   | Habits logged and data saved to Google Sheets             | PASS   |
 | TC-009    | Attempt to log habits without selecting any      | Warning message displayed | Warning message appears.           | PASS   |
 | TC-010    | Delete user account                              | Account and data deleted  | Account and associated data deleted.             | PASS   |
+| TC-011    | Log Out                                          | Return to start up screen | User logged out and returned to start screen             | PASS   |
+| TC-012    | View logged habits                               | Display logged habits     | Logged habits displayed to user.            | PASS   |
+| TC-013    | Encrypt password in worksheet                    | Encrypt user password in worksheet |Password input from user is encrypted and saved as hashed password in worksheet| PASS   |
+| TC-014    | Start program                                    | Start up page displays when program run. | Start up page loaded.             | PASS   |
 
 ### Validation
 
@@ -270,7 +274,7 @@ Logging Habits Fix- Worksheet View:<br>
 
 6. Deleted Account- Removing All Stored Habits.<br>
 When testing the function to delete an account, I noticed that not all of the saved habits associated with the user's username were being deleted. To resolve this issue, I amended the function to first filter out the entries relating to other users, then deleting all remaining data (which would only relate to the current user). Once deleted I could then add the filtered entries back into the worksheet, and now all relevant data is removed when calling this function.<br>
-Delete Account Bug:
+Delete Account Bug:<br>
 ![Delete Account Bug](assets/images/delete-user-bug.webp)
 
 ## Deployment
