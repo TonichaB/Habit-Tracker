@@ -224,11 +224,16 @@ Part way through the development of the project I noticed a deprecation warning 
 Deprication Warning:<br>
 ![Deprication Warning]()<br>
 
-4. Password Validation.
+4. Password Validation.<br>
+Towards the end of the project, when testing it's functionality, I can accross an issue with the password validation function whereby any password entered by a user in the log in/register functions was not correctly validating the password input provided.
 
-5. Logging Completed Weekly/Monthly Habits.
+5. Logging Completed Weekly/Monthly Habits.<br>
+When testing the function to allow the user to log their completed habits for the current date, I noticed that only the daily habits were being saved within the habit_log worksheet.<br>
+![Validate Password Bug]()<br>
 
-6. Deleted Account- Removing All Stored Habits.
+6. Deleted Account- Removing All Stored Habits.<br>
+When testing the function to delete an account, I noticed that not all of the saved habits associated with the user's username were being deleted.<br>
+![Delete Account Bug]()
 
 ### Deployment
 
