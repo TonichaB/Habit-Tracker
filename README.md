@@ -152,6 +152,14 @@ All Users:<br>
 
 ### Logic Flow
 
+Given the complexity of this project I spend some time planning the logic required for the application to run efficiently and to give a general idea on how to best approach each stage. To do this I created a flowchart that mapped out each function that allowed me to follow the logic through the application as this was developed. As I worked through the project I would come up with new ideas for the logic flow and features to be included, and so the flowchart changed during the development process. Below shows the comparison for the initial flowchart created, and the final flowchart reflecting the current application.<br>
+
+Initial Flowchart:<br>
+![Initial Flowchart]()<br>
+
+Final Flowchart:<br>
+![Final Flowchart]()
+
 ### Technologies
 
 The main technologies I have utilised within this project include:<br>
