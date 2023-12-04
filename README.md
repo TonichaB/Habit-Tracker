@@ -225,11 +225,15 @@ Deprication Warning:<br>
 ![Deprication Warning]()<br>
 
 4. Password Validation.<br>
-Towards the end of the project, when testing it's functionality, I can accross an issue with the password validation function whereby any password entered by a user in the log in/register functions was not correctly validating the password input provided.
+Towards the end of the project, when testing it's functionality, I can accross an issue with the password validation function whereby any password entered by a user in the log in/register functions was not correctly validating the password input provided. Using print statements to assist with debugging, I was able to determine the bug occured due to the requirements for the password being contradictory. Passwords created were allowed to include special characters initially, however were then given a condition to only allow alphanumeric characters. Once the condition for alphanumeric characters was removed the validation function worked as intended and the password was confirmed.<br>
+Password Validation Bug:<br>
+![Validate Password Bug]()<br>
+Password Validation Fix:<br>
+![Validate Password Fix]()<br>
 
 5. Logging Completed Weekly/Monthly Habits.<br>
 When testing the function to allow the user to log their completed habits for the current date, I noticed that only the daily habits were being saved within the habit_log worksheet.<br>
-![Validate Password Bug]()<br>
+
 
 6. Deleted Account- Removing All Stored Habits.<br>
 When testing the function to delete an account, I noticed that not all of the saved habits associated with the user's username were being deleted.<br>

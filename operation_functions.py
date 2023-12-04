@@ -259,7 +259,7 @@ class Functions:
 
     def log_habits(self):
         print("What have you achieved today?")
-        # Display saved habits
+        # Get all habits saved by the user
         habit_options = self.habit_tracker.habits_worksheet.col_values(1)
         user_habits = [
             habit.split('_', 1)[1]
@@ -273,28 +273,33 @@ class Functions:
             print("You have no habits to log for today!")
             return
         else:
-            # User can select habits completed
-            habits_completed = questionary.checkbox(
-                "Select the habits you have completed today:",
-                choices=user_habits
-            ).ask()
+            for habit in user_habits:
+                confirmation = questionary.confirm(
+                    f"Do you want to confirm completing the habit: {habit}?"
+                ).ask()
 
-            # Get the current date
-            current_date = datetime.now().strftime("%Y-%m-%d")
+                if confirmation:
+                    # Get the current date
+                    current_date = datetime.now().strftime("%Y-%m-%d")
 
-            # Update the log worksheet with new entries
-            log_worksheet = self.habit_tracker.SHEET.worksheet('habit_log')
+                    # Update the log worksheet with new entry
+                    log_worksheet = (
+                        self.habit_tracker.SHEET.worksheet('habit_log')
+                    )
 
-            # Update the spreadsheet with logged habits
-            for habit in habits_completed:
-                # This will extract habit name without username present
-                log_worksheet.append_row([
-                    self.habit_tracker.logged_in_user,
-                    habit,
-                    current_date
-                ])
-                print(f"{habits_completed} logged succesfully for today!")
-                self.habit_operations.main_options()
+                    # Log the habit
+                    habit_name = f"{self.habit_tracker.logged_in_user}_{habit}"
+                    log_worksheet.append_row([
+                        self.habit_tracker.logged_in_user,
+                        habit_name,
+                        current_date
+                    ])
+                    print(f"{habit_name} logged successfully for today!")
+                else:
+                    print(f"{habit} not confirmed.")
+
+        print("All habits checked, returning to Main Menu.")
+        self.habit_operations.main_options()
 
     def view_habits(self):
         view_options = questionary.select(
@@ -418,7 +423,7 @@ class Functions:
         Will return true if password is valid
         Will return false if the password is invalid
         """
-
+        print("Password input:", password)
         # Password should contain no spaces
         if ' ' in password:
             return False
@@ -428,10 +433,6 @@ class Functions:
         if not re.search(r'[A-Z]', password) \
                 or not re.search(r'[a-z]', password) \
                 or not re.search(r'[!@#$%^&*()-_+=]', password):
-            return False
-
-        # Only allow alphanumeric characters
-        if not password.isalnum():
             return False
 
         # Password meets all requirements
