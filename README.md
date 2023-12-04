@@ -21,6 +21,7 @@ You can access the live application [here!](https://habit-tracker-tb-f3dc632b7d9
 - [Technologies](#technologies)
     - [Libraries](#libraries)
 - [Testing](#testing)
+- [Validation](#validation)
 - [Bugs](#bugs)
 - [Deployment](#deployment)
     - [Version Control](#version-control)
@@ -69,34 +70,34 @@ By utilising classes for 'HabitTracker', 'HabitOperations', and 'Functions' I ha
 Within this project I have included a number of features/functions that addressses a users expectations when interacting with the application. <br>
 
 - Start Page- When the user starts the application they see a welcome statement and are presenting with the options to log in or register.<br>
-![Start Up]()<br>
+![Start Up](assets/images/start-up.webp)<br>
 - Log In - If the user chooses to log in, they will be asked to enter their username and password which will be validated against the Google Sheet before allowing the user to proceed.<br>
-![Log In]()<br>
+![Log In](assets/images/log-in.webp)<br>
 - Register - If the user chooses to register an account, they will be asked to provide a new username and password which is then saved to the Google Sheet (so long as the requirements are met). The user is then also asked to confirm habits they would like to track using the Add New Habit function outlined further below.<br>
-![Register]()<br>
+![Register](assets/images/register.webp)<br>
 - Main Menu - Once the user has logged in/ registered, they will be taken to the Main Menu with a list of options they can choose from.<br>
-![Main Menu]()<br>
+![Main Menu](assets/images/main-menu.webp)<br>
 - Update Password - From the Main Menu, the user can select to update their password. When selected they will be asked to enter their old password, which is compared to the password saved to Google Sheets; if this matches the user can then input a new password which will replace the previously saved data. <br>
-![Update Password]()<br>
+![Update Password](assets/images/update-password.webp)<br>
 - Add New Habit - From the Main Menu, the user can select to add a new habit which will be saved to the habits_list worksheet. The input will check to make sure the habit chosen hasn't already been saved within the worksheet to avoid duplications.<br>
-![Add New Habit]()<br>
+![Add New Habit](assets/images/new-habit-1.webp)<br>
 - Delete Habit - From the Main Menu, the user can select to delete a chosen habit. They will be asked to confirm the habit name and if this matches withing the habits_list worksheet the user is asked to confirm they are still happy to delete the habit. Once confirmed the data is removed from the worksheet.<br>
-![Delete Habit]()<br>
+![Delete Habit](assets/images/delete-habit.webp)<br>
 - Change Habit Frequency - From the Main Menu, the user can select to change the frequency associated with a saved habit. They will need to input the habit name, and then will be asked to confirm the new frequency to be associated with this habit in the habits_list worksheet.<br>
-![Change Habit Frequency]()<br>
+![Change Habit Frequency](assets/images/habit-frequency.webp)<br>
 - Log Today's Habits - From the Main Menu, the user can select to log their completed habits for the current date. This function will dsplay the saved habits specific for the current user, and will allow them to highlight their completed habits using the spacebar, and when they click enter the completed habits are confirmed and the habit_log worksheet is updated with the habit and date confirmed for the user.<br>
-![Log Today's Habits]()<br>
+![Log Today's Habits](assets/images/log-habit.webp)<br>
 - View Habits - From the Main Menu, the user can select the option to view habits, which will take them to a new option screen. This screen will give the user a choice to either view the completed habits for the current date, or to view the completed habits for a set time period.<br>
-![View Habits]()<br>
+![View Habits](assets/images/view-habits.webp)<br>
 - View Today's Habits - From the View Habits menu, the user can select to view the habits for the current date. This will present them with any habits currently saved to the habit_log worksheet, where the corresponding date saved matches the current date. <br>
-![View Today's Habits]()<br>
+![View Today's Habits](assets/images/view-today-habits.webp)<br>
 - View Habits for a Selected Period - From the View Habits menu, the user can select to view completed habits that have been saved within a specified time period. The user will be asked to confirm a start and end date for the data to be filtered through. As long as the user has used the correct date format, the filtered habits will then be presented to the user before returning them to the Main Menu.<br>
-![View Habit's for Selected Period]()<br>
+![View Habit's for Selected Period](assets/images/view-habit-time-period.webp)<br>
 - Log Out - From the Main Menu, the user can choose to log out of their account. If selected the user will return to the Start Up screen where they are asked again to either log in or register.
 - Delete Account - From the Main Menu, the user can select the option to delete their account. If selected, the user is first asked to confirm they are sure they want to delete their account. If confirmed yes all saved details within the Google Sheet that is associated with that username will be deleted; if they confirm no the user is taken back to the Main Menu. <br>
-![Delete Account]()<br>
+![Delete Account](assets/images/delete-account.webp)<br>
 - Quit - From the Main menu, the user can choose to exit the application altogether using the Quit option. When selected the user will see a message to confirm the application is quitting, following which the terminal will clear and the application will end.<br>
-![Quit]()
+![Quit](assets/images/quit-loading.webp)
 
 #### Future Enhancements
 
@@ -118,7 +119,7 @@ There are 4 occassions in this project where the user is presented with options 
 #### Handling of User Input
 
 Each time a user provides any form of input to the terminal, their response will be validated and the user will be informed whether their input has been successful or not. In particular, when a user goes to log in or register, they will see a message providing details of the requirements to be met for both usernames and passwords.<br>
-![Username/Password Message]() 
+![Username/Password Message](assets/images/username-password-message.webp) 
 
 #### Libraries Imported
 
@@ -169,10 +170,10 @@ Given the complexity of this project I spend some time planning the logic requir
 As I worked through the project I would come up with new ideas for the logic flow and features to be included, and so the flowchart changed during the development process. Below shows the comparison for the initial flowchart created, and the final flowchart reflecting the current application.<br>
 
 Initial Flowchart:<br>
-![Initial Flowchart]()<br>
+![Initial Flowchart](assets/images/Habit%20Tracker%20Flowchart-%20Initial.webp)<br>
 
 Final Flowchart:<br>
-![Final Flowchart]()
+![Final Flowchart](assets/images/Final-%20Habit%20Tracker.webp)
 
 ## Technologies
 
@@ -214,6 +215,21 @@ The following Libraries have been imported for this project:<br>
 | TC-009    | Attempt to log habits without selecting any      | Warning message displayed | Warning message appears.           | PASS   |
 | TC-010    | Delete user account                              | Account and data deleted  | Account and associated data deleted.             | PASS   |
 
+### Validation
+
+I have tested my prject using the Code Institute Python Linter to check for any validation errors. I am happy to say no errors are reported.<br>
+
+run.py File:<br>
+![run.py validation](assets/images/python-linter-run.py-pass.webp)<br>
+
+habit_tracker.py File:<br>
+![habit_tracker.py validation](assets/images/python-linter-habit_tracker-pass.webp)<br>
+
+habit_operations.py File:<br>
+![habit_operations.py validation](assets/images/python-linter-habit_operations-pass.webp)<br>
+
+operation_functions.py File:<br>
+![operation_functions.py validation](assets/images/python-linter-operation_functions-pass.webp)<br>
 
 ## Bugs
 
@@ -225,37 +241,37 @@ At the start of the development process I attempted to use the 'keyboard' librar
 2. Unable to Delete Habit. <br>
 When creating the function for a user to delete a chosen habit from the database, an error occured whereby the user was not given the opportunity to input the details for the habit to be deleted, and instead the terminal would continuously print that the habit could not be located. This was caused by an error with the initial request for user input. I have been able to resolve this and now the user can input the details of the habit they would like to remove. <br>
 Delete Habit Bug:<br>
-![Delete Habit Bug]()<br>
+![Delete Habit Bug](assets/images/delete-habit-error.webp)<br>
 Delete Habit Fixed:<br>
-![Delete Habit Fixed]()<br>
+![Delete Habit Fixed](assets/images/delete-habit-fix.webp)<br>
 
 3. Deprecation Warning.<br>
 Part way through the development of the project I noticed a deprecation warning would appear when running the project in the terminal. After looking into the issue being raised in this warning (please see further details within the [Resources](#resources) section below) I was able to determine that the warning would not affect the functionality of the project and therefore I could choose to ignore this warning. I tried to utilise a library within python called 'shutup' which would set the workspace to ignore these warnings. As this would remove any warnings of this type, I chose not to implement this solution until all other aspects of the project had been completed so I would not miss any other warnings that could negatively impact the project. When looking at the deployed project on Heroku it was unable to process the shutup command and so i have had to keep the warning displayed. The functionality of the project is unaffected by this.<br>
 Deprication Warning:<br>
-![Deprication Warning]()<br>
+![Deprication Warning](assets/images/Deprication-warning.webp)<br>
 
 4. Password Validation.<br>
 Towards the end of the project, when testing it's functionality, I can accross an issue with the password validation function whereby any password entered by a user in the log in/register functions was not correctly validating the password input provided. Using print statements to assist with debugging, I was able to determine the bug occured due to the requirements for the password being contradictory. Passwords created were allowed to include special characters initially, however were then given a condition to only allow alphanumeric characters. Once the condition for alphanumeric characters was removed the validation function worked as intended and the password was confirmed.<br>
 Password Validation Bug:<br>
-![Validate Password Bug]()<br>
+![Validate Password Bug](assets/images/validate-password-bug.webp)<br>
 Password Validation Fix:<br>
-![Validate Password Fix]()<br>
+![Validate Password Fix](assets/images/validate-password-fix.webp)<br>
 
 5. Logging Completed Weekly/Monthly Habits.<br>
 When testing the function to allow the user to log their completed habits for the current date, I noticed that only the first habit selected was being saved to the habit_log worksheet. I tried to resolve this bug to ensure all selected habits would be saved, however this became too complex and due to time contrainst I chose instead to show each habit one at a time for the user to confirm if they want to log as completed.<br>
 Logging Habits Bug- Terminal View:<br>
-![Log Habit Terminal View]()<br>
+![Log Habit Terminal View](assets/images/log-habit-terminal-view.webp)<br>
 Logging Habits Bug- Worksheet View:<br>
-![Logging Habit Worksheet View]()<br>
+![Logging Habit Worksheet View](assets/images/log-habit-worksheet-view.webp)<br>
 Logging Habits Fix- Terminal View:<br>
-![Logging Habit Terminal View]()<br>
+![Logging Habit Terminal View](assets/images/log-habits-terminal-fixed.webp)<br>
 Logging Habits Fix- Worksheet View:<br>
-![Logging Habit Worksheet View]()<br>
+![Logging Habit Worksheet View](assets/images/log-habit-worksheet-fixed.webp)<br>
 
 6. Deleted Account- Removing All Stored Habits.<br>
 When testing the function to delete an account, I noticed that not all of the saved habits associated with the user's username were being deleted. To resolve this issue, I amended the function to first filter out the entries relating to other users, then deleting all remaining data (which would only relate to the current user). Once deleted I could then add the filtered entries back into the worksheet, and now all relevant data is removed when calling this function.<br>
 Delete Account Bug:
-![Delete Account Bug]()
+![Delete Account Bug](assets/images/delete-user-bug.webp)
 
 ## Deployment
 
@@ -290,11 +306,11 @@ This project makes use of Google Sheets to store all data required. Please see t
 2. In order to maintain the security of the data for my project, I have restricted access to the original sheet. The credentials also will not be included in the cloned repository, therefore you will need to create a new sheet. **Make sure the name of the sheet is saved as *habit_tracker* so this can be correctly linked to the cloned repository.**
 3. Below shows how the sheet needs to be set up for the application to run smoothly:<br>
 User Accounts Worksheet: <br>
-![User Accounts Worksheet]()<br>
+![User Accounts Worksheet](assets/images/user-account-worksheet.webp)<br>
 Habits List Worksheet: <br>
-![Habits List Worksheet]()<br>
+![Habits List Worksheet](assets/images/habits-list-worksheet.webp)<br>
 Habits Log Worksheet: <br>
-![Habits Log Worksheet]()<br>
+![Habits Log Worksheet](assets/images/habit-log-worksheet.webp)<br>
 4. Once you have the sheet set up correctly, you will need to activate the API credentials. A detailed guide to set this up can be found [here](https://docs.gspread.org/en/latest/oauth2.html). As part of this guide you will create a JSON file which should be downloaded as saved to your local machine, we will need this file for the next step.
 5. Now that you have created and saved your JSON credentials file, we want to download this to the root of the project. To do this drag the file from your downloads(or wherever you have this saved locally) directly into the IDE workspace. Make sure to re-name this file as *creds.json*.
 6. Within the newly saved *creds.json* file locate the client_email and copy the value shown (**do not include the quotes**). Now return to your sheet and select the *Share* button to the top-right. Paste the copied client email and ensure *Editor* is selected, and untick the *Notify People* option. You can now click *Share* which will allow the IDE workspace to now access and edit the sheet.
