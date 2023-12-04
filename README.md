@@ -33,9 +33,9 @@ You can access the live application [here!](https://habit-tracker-tb-f3dc632b7d9
 
 <br>
 
-### Site Goals
+## Site Goals
 
-#### Project Goals
+### Project Goals
 
 For this project, I had the following goals to be met:<br>
 
@@ -45,11 +45,11 @@ For this project, I had the following goals to be met:<br>
 - User Options and Instructions
 - Libraries Imported
 
-#### Project Outcomes
+### Project Outcomes
 
-The above mentioned Project Goals have been addressed as per the below.
+The above mentioned Project Goals have been addressed as per the below sections.
 
-##### Creation of a Data Model
+### Creation of a Data Model
 
 Through the use of Google Sheets and the logic contained within the project code I have created a structured representation of the data and relationships. Each worksheet within the Google Sheet corresponds to a entity type, with the rows within the worksheets representing instances of those entities. The data model can be broken down as follows:<br>
 
@@ -62,9 +62,9 @@ There is a worksheet named 'habit_log' that stores the user habits (username, ha
 4. Object-Oriented Design:<br>
 By utilising classes for 'HabitTracker', 'HabitOperations', and 'Functions' I have been able to encapsulate the behaviour relating to the user operations, habits and general functions.
 
-##### Features
+### Features
 
-###### Existing Features
+#### Existing Features
 
 Within this project I have included a number of features/functions that addressses a users expectations when interacting with the application. <br>
 
@@ -98,14 +98,14 @@ Within this project I have included a number of features/functions that addresss
 - Quit - From the Main menu, the user can choose to exit the application altogether using the Quit option. When selected the user will see a message to confirm the application is quitting, following which the terminal will clear and the application will end.<br>
 ![Quit]()
 
-###### Future Enhancements
+#### Future Enhancements
 
 Whilst I am happy with the current features within this project, with additional time I could include:<br>
 
 - Habit Examples- If a user is struggling to think of a habit to track, a new function could include the ability to view examples of habits that other users have saved (making sure not to include the user details associated with the saved habit) that they could then select to track themselves.
 - Fix Deprication Warning- Whilst for this project it was not necessary to fix the Deprication warning in relation to the gspread library, with more time I would refactor the code to utilise 'google-auth' over 'oauth2client'. Please see [Bugs](#bugs) below noting how I have chosen to address this in the meantime.
 
-##### User Options and Instructions
+#### User Options and Instructions
 
 So as to provide accessibility and a smooth user experience, whenever a user is presented with a question or input request they will be given instructions on how to action each step. This includes the following examples:<br>
 
@@ -115,25 +115,22 @@ Throughout the application there are a few different functions that will require
 - Option Selection Required<br>
 There are 4 occassions in this project where the user is presented with options to choose from (Log In/Register, Main Menu, View Habit Options and Log Today's Habits). For these functions the user will be advised to use their arrow keys to navigate the options, and to press enter to select.<br>
 ![Option Selection Required]()<br>
-- Multiple Choice Selection<br>
-When the user selects to log their habits for the current date, they will be presented with a list of the habits saved specifically for that user. They will be given instructions on how to navigate the options presented, how to select which option to log, how to toggle the options and how to invert the options.<br>
-![Multiple Choice Selection]()<br>
 
-##### Handling of User Input
+#### Handling of User Input
 
 Each time a user provides any form of input to the terminal, their response will be validated and the user will be informed whether their input has been successful or not. 
 
-##### Libraries Imported
+#### Libraries Imported
 
 I have imported a number of libraries within this project to improve the overall functionality and user experience. Details for the specific libraries included are show [here](#libraries).
 
-### User Experience
+## User Experience
 
-#### Target Audience
+### Target Audience
 
 This project has been created for a target audience of young adults/adults from any background. In particular for users who would like to follow a healthier lifestyle by building up regular habits they are able to track daily.
 
-#### User Stories
+### User Stories
 
 First Time User:<br>
 
@@ -165,7 +162,7 @@ All Users:<br>
 >
 > *"As a user, I would like the option to change my password"*
 
-### Logic Flow
+## Logic Flow
 
 Given the complexity of this project I spend some time planning the logic required for the application to run efficiently and to give a general idea on how to best approach each stage. To do this I created a flowchart that mapped out each function that allowed me to follow the logic through the application as this was developed.<br>
 
@@ -177,7 +174,7 @@ Initial Flowchart:<br>
 Final Flowchart:<br>
 ![Final Flowchart]()
 
-### Technologies
+## Technologies
 
 The main technologies I have utilised within this project include:<br>
 1. Heroku- The project has been deployed on Heroku. See [Deployment](#deployment) to see the guide for deployment.
@@ -189,9 +186,9 @@ The main technologies I have utilised within this project include:<br>
 7. Github- After code has been pushed it has been stored within Github.
 8. ChatGPT 3.5- To assist with debugging I have utilised the [open.AI ChatGPT](https://openai.com/blog/chatgpt) model.
 9. Visual Paradigm- I have used this website to create the initial flowchart for my project. Click [here](#logic-flow) to view the flowchart.
-10. [Mermaid.Live](https://mermaid.live/)- As the prject developed and became more complicated, I found this website beneficial. With the assistance of ChatGPT I was able to convert my code into mermaid.js syntax, and when pasting this to the above site a flowchart is generated for the logic flow of the project.
+10. [Mermaid.Live](https://mermaid.live/)- As the project developed and became more complicated, I found this website beneficial. With the assistance of ChatGPT I was able to convert my code into mermaid.js syntax, and when pasting this to the above site a flowchart is generated for the logic flow of the project.
 
-#### Libraries
+### Libraries
 
 The following Libraries have been imported for this project:<br>
 1. gspread - This library is used to link the program to Google Sheets where the main data has been stored.
@@ -203,9 +200,9 @@ The following Libraries have been imported for this project:<br>
 7. time - This library has been used to create a time delay prior to clearing the terminal so the user can see any printed messages applicable for their actions.
 8. shutup - This library has been used to allow the files to ignore the deprecation warning relating to the gspread library.
 
-### Testing
+## Testing
 
-### Bugs
+## Bugs
 
 When developing the project there were a few bugs I came accross that thankfully I was able to fix to allow the application to run correctly.
 
@@ -247,11 +244,11 @@ When testing the function to delete an account, I noticed that not all of the sa
 Delete Account Bug:
 ![Delete Account Bug]()
 
-### Deployment
+## Deployment
 
 The following sections explain how this project has been deployed.
 
-#### Version Control
+### Version Control
 
 I have created this project using the Code Anywhere IDE with all changes being pushed to the github repository named 'Habit_Tracker'.<br>
 
@@ -261,7 +258,7 @@ The following git commands have been utilised throughout the development process
 - git commit -m "message" - This command commits any changes to the local repository queue in readiness to be pushed. Details of the changes made will replace the "message" section of the command.
 - git push - This is the final command used to push all committed entries to the repository on github.
 
-#### Local Cloning
+### Local Cloning
 
 In order to clone this repository to be used locally please follow these steps:<br>
 
@@ -272,7 +269,7 @@ In order to clone this repository to be used locally please follow these steps:<
 
 The project will now be cloned to your local machine for use. If you wish to run the project within your terminal run the following command: '*python run.py*'
 
-#### Google Sheets Set Up
+### Google Sheets Set Up
 
 This project makes use of Google Sheets to store all data required. Please see the following steps to create your own copy of the worksheet used and how to connect this within the cloned repository.<br>
 
@@ -292,7 +289,7 @@ Habits Log Worksheet: <br>
 
 The cloned repository already contains the required code to connect the project to the sheet created in Google Sheets, so as long as you have followed the above steps correctly this will run smoothly when deployed to Heroku (see below for [Heroku Deployment](#heroku-deployment)).
 
-#### Heroku Deployment
+### Heroku Deployment
 
 This project has been deployed to [Heroku](https://dashboard.heroku.com/apps), this being a Platform as a Service (PaaS). This enables developers the ability to build, run and operate applications in the cloud as is required as per the [Project Goals](#project-goals) for this project.<br>
 
@@ -311,11 +308,11 @@ Once the above has been updated, select *Add*
 
 If you have followed all above steps correctly the project will now be connected and deployed to Heroku.
 
-### Credits
+## Credits
 
 Within this section I have noted the resources used when building the project, and acknowledgements towards those who have supported me in the journey.
 
-#### Resources
+### Resources
 
 Given the complexity of this project I have made use of a number of resources to help me bring my ideas to life.
 
@@ -328,7 +325,7 @@ Given the complexity of this project I have made use of a number of resources to
 7. [gspread directory](https://docs.gspread.org/en/latest/oauth2.html) - When running my code, I noticed a deprication warning would appear to note "client_factory will be replaced by gspread.hhtp_client types". I have used this guidance to determine the reason for this warning, which appears to relate to the version of gspread being used which utilises 'oauth2client' which has since been deprecated by Google in favour of 'google-auth'. I have referred to this warning in the above section for [Bugs](#bugs) to note how I have chosen to address this.
 8. [Stack Overflow- Deprication Warnings](https://stackoverflow.com/questions/879173/how-to-ignore-deprecation-warnings-in-python) - I have referred to this guidance when trying to resolve the deprecation warning as noted above. Please see the [Bugs](#bugs) section for further details on the method chosen.
 
-#### Acknowledgements
+### Acknowledgements
 
 I would like to thank my mentor Luke who has continued to help me with my coding journey, offering constructive feedback to make the most of my new skills in learning Python.<br>
 
