@@ -60,6 +60,7 @@ class Functions:
             f'has been deleted.'
             )
         self.habit_tracker.startup()
+        self.clear_with_delay()
 
     def new_habit(self):
         while True:
@@ -83,6 +84,7 @@ class Functions:
                 # progress to the Main Menu
                 print("No habit entered. Returning to Menu.")
                 self.habit_operations.main_options()
+                self.clear_with_delay()
             elif new_habit not in habit_options:
 
                 # Add username to the habit saved
@@ -109,6 +111,7 @@ class Functions:
                 )
 
                 print("Habit Saved!")
+                self.clear_with_delay()
 
     def delete_habit(self):
         print("Don't need to track a habit anymore?")
@@ -145,10 +148,12 @@ class Functions:
                     )
                     print("Habit Removed Sucessfully!")
                     self.habit_operations.main_options()
+                    self.clear_with_delay()
                     break
                 # If user types 'N' the habit is not removed
                 else:
                     print("You have selected No")
+                    self.clear_with_delay()
 
                 # If the user does not enter anything, return to Main Menu
             elif not habit_options:
@@ -157,6 +162,7 @@ class Functions:
                     Returning to Main Menu'''
                 )
                 self.habit_operations.main_options()
+                self.clear_with_delay()
                 break
 
             # If the habit has been typed incorrectly the user is
@@ -214,11 +220,14 @@ class Functions:
 
                     print("Password Updated!")
                     self.habit_operations.main_options()
+                    self.clear_with_delay()
                     break
                 else:
                     print("Old Password Incorrect, Try Again")
+                    self.clear_with_delay()
             else:
                 print("Username not found or incorrect current password.")
+                self.clear_with_delay()
 
     def update_frequency(self):
         print("Change how often you want to complete a habit.")
@@ -234,6 +243,7 @@ class Functions:
 
         if not user_habits:
             print("You have not saved any habits yet!")
+            self.clear_with_delay()
             return
 
         # Allow user to select a habit
@@ -268,10 +278,12 @@ class Functions:
                     habit_index + 1, 2, new_frequency
                 )
                 print(f"{habit_name} has been updated to {new_frequency}")
+                self.clear_with_delay()
 
             else:
                 print("Habit frequency has not been updated")
             self.habit_operations.main_options()
+            self.clear_with_delay()
 
     def log_habits(self):
         print("What have you achieved today?")
@@ -287,6 +299,7 @@ class Functions:
 
         if not user_habits:
             print("You have no habits to log for today!")
+            self.clear_with_delay()
             return
         else:
             for habit in user_habits:
@@ -313,9 +326,11 @@ class Functions:
                     print(f"{habit_name} logged successfully for today!")
                 else:
                     print(f"{habit} not confirmed.")
+                    self.clear_with_delay()
 
         print("All habits checked, returning to Main Menu.")
         self.habit_operations.main_options()
+        self.clear_with_delay()
 
     def view_habits(self):
         view_options = questionary.select(
@@ -328,10 +343,13 @@ class Functions:
 
         if view_options == "View Today's Habits":
             self.view_current_date_habits()
+            self.clear_with_delay()
         elif view_options == "View Habits for a Selected Period":
             self.view_habits_in_period()
+            self.clear_with_delay()
         elif view_options == "Return to Main Menu":
             self.habit_operations.main_options()
+            self.clear_with_delay()
 
     def view_current_date_habits(self):
         # Get the current date
@@ -363,6 +381,7 @@ class Functions:
         else:
             print("No habits have been logged for the current date.")
         self.habit_operations.main_options()
+        self.clear_with_delay()
 
     def view_habits_in_period(self):
         # Initialise start and end date variables
@@ -412,6 +431,7 @@ class Functions:
         else:
             print("There are no habits logged within this time period.")
         self.habit_operations.main_options()
+        self.clear_with_delay()
 
     # Function to validate username input
     def validate_username(self, username):

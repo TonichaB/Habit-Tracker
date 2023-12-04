@@ -21,10 +21,12 @@ class HabitOperations:
             # Validate the username format
             if not self.operation_functions.validate_username(username):
                 print("Invalid username format. Please try again")
+                self.operation_functions.clear_with_delay()
                 continue
 
             if not self.operation_functions.validate_password(password):
                 print("Invalid password format. Please try again.")
+                self.operation_functions.clear_with_delay()
                 continue
 
             username_column = (
@@ -47,11 +49,14 @@ class HabitOperations:
                     self.habit_tracker.logged_in_user = username
                     # Proceed to Main Menu
                     self.main_options()
+                    self.operation_functions.clear_with_delay()
                     break
                 else:
                     print("Incorrect password.")
+                    self.operation_functions.clear_with_delay()
             else:
                 print("Username not found.")
+                self.operation_functions.clear_with_delay()
 
         return False
 
@@ -77,6 +82,7 @@ class HabitOperations:
                 # If the username exists the user will need
                 # to try again
                 print("The username already exists. Please try again.")
+                self.operation_functions.clear_with_delay()
             else:
                 # If the username is new, the User can then add a password
                 new_password = (
@@ -89,6 +95,7 @@ class HabitOperations:
                     new_password
                 ):
                     print("Invalid password format. Please try again")
+                    self.operation_functions.clear_with_delay()
                     continue
 
                 # Use the validated username and password
@@ -116,6 +123,7 @@ class HabitOperations:
                     self.habit_tracker.logged_in_user = new_user
 
                     print("Registration successful!")
+                    self.operation_functions.clear_with_delay()
                     # Once the credentials are confirmed the User
                     # can start to build their habits
                     self.operation_functions.new_habit()
@@ -175,6 +183,7 @@ class HabitOperations:
         # Log out from current user and return to start page
         elif choice == "Log Out":
             print("You are now logged out!")
+            self.operation_functions.clear_with_delay()
             self.habit_tracker.startup()
 
         # User can choose to delete their account
