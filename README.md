@@ -221,7 +221,7 @@ The following Libraries have been imported for this project:<br>
 
 ### Validation
 
-I have tested my prject using the Code Institute Python Linter to check for any validation errors. I am happy to say no errors are reported.<br>
+I have tested my project using the [Code Institute Python Linter](https://pep8ci.herokuapp.com/) to check for any validation errors. I am happy to say no errors are reported.<br>
 
 run.py File:<br>
 ![run.py validation](assets/images/python-linter-run.py-pass.webp)<br>
@@ -234,6 +234,8 @@ habit_operations.py File:<br>
 
 operation_functions.py File:<br>
 ![operation_functions.py validation](assets/images/python-linter-operation_functions-pass.webp)<br>
+
+I also chose to test the project using [Python Checker](https://www.pythonchecker.com/) which confirmed each page to be in 'Excellent' condition. The only notes given were in relation to indentations which are confirmed to be correct in the Python Linter above. For this reason I have not made any of these suggested changes.
 
 ## Bugs
 
