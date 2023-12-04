@@ -66,22 +66,37 @@ By utilising classes for 'HabitTracker', 'HabitOperations', and 'Functions' I ha
 
 ###### Existing Features
 
-Within this project I have featured a number of functions that addressses a users expectations when interacting with the application. <br>
+Within this project I have included a number of features/functions that addressses a users expectations when interacting with the application. <br>
 
-- Log In
-- Register
-- Main Menu
-- Update Password
-- Add New Habit
-- Delete Habit
-- Change Habit Frequency
-- Log Today's Habits
-- View Habits
-- View Today's Habits
-- View Habits for a Selected Period
-- Log Out
-- Delete Account
-- Quit
+- Start Page- When the user starts the application they see a welcome statement and are presenting with the options to log in or register.<br>
+![Start Up]()<br>
+- Log In - If the user chooses to log in, they will be asked to enter their username and password which will be validated against the Google Sheet before allowing the user to proceed.<br>
+![Log In]()<br>
+- Register - If the user chooses to register an account, they will be asked to provide a new username and password which is then saved to the Google Sheet (so long as the requirements are met). The user is then also asked to confirm habits they would like to track using the Add New Habit function outlined further below.<br>
+![Register]()<br>
+- Main Menu - Once the user has logged in/ registered, they will be taken to the Main Menu with a list of options they can choose from.<br>
+![Main Menu]()<br>
+- Update Password - From the Main Menu, the user can select to update their password. When selected they will be asked to enter their old password, which is compared to the password saved to Google Sheets; if this matches the user can then input a new password which will replace the previously saved data. <br>
+![Update Password]()<br>
+- Add New Habit - From the Main Menu, the user can select to add a new habit which will be saved to the habits_list worksheet. The input will check to make sure the habit chosen hasn't already been saved within the worksheet to avoid duplications.<br>
+![Add New Habit]()<br>
+- Delete Habit - From the Main Menu, the user can select to delete a chosen habit. They will be asked to confirm the habit name and if this matches withing the habits_list worksheet the user is asked to confirm they are still happy to delete the habit. Once confirmed the data is removed from the worksheet.<br>
+![Delete Habit]()<br>
+- Change Habit Frequency - From the Main Menu, the user can select to change the frequency associated with a saved habit. They will need to input the habit name, and then will be asked to confirm the new frequency to be associated with this habit in the habits_list worksheet.<br>
+![Change Habit Frequency]()<br>
+- Log Today's Habits - From the Main Menu, the user can select to log their completed habits for the current date. This function will dsplay the saved habits specific for the current user, and will allow them to highlight their completed habits using the spacebar, and when they click enter the completed habits are confirmed and the habit_log worksheet is updated with the habit and date confirmed for the user.<br>
+![Log Today's Habits]()<br>
+- View Habits - From the Main Menu, the user can select the option to view habits, which will take them to a new option screen. This screen will give the user a choice to either view the completed habits for the current date, or to view the completed habits for a set time period.<br>
+![View Habits]()<br>
+- View Today's Habits - From the View Habits menu, the user can select to view the habits for the current date. This will present them with any habits currently saved to the habit_log worksheet, where the corresponding date saved matches the current date. <br>
+![View Today's Habits]()<br>
+- View Habits for a Selected Period - From the View Habits menu, the user can select to view completed habits that have been saved within a specified time period. The user will be asked to confirm a start and end date for the data to be filtered through. As long as the user has used the correct date format, the filtered habits will then be presented to the user before returning them to the Main Menu.<br>
+![View Habit's for Selected Period]()<br>
+- Log Out - From the Main Menu, the user can choose to log out of their account. If selected the user will return to the Start Up screen where they are asked again to either log in or register.
+- Delete Account - From the Main Menu, the user can select the option to delete their account. If selected, the user is first asked to confirm they are sure they want to delete their account. If confirmed yes all saved details within the Google Sheet that is associated with that username will be deleted; if they confirm no the user is taken back to the Main Menu. <br>
+![Delete Account]()<br>
+- Quit - From the Main menu, the user can choose to exit the application altogether using the Quit option. When selected the user will see a message to confirm the application is quitting, following which the terminal will clear and the application will end.<br>
+![Quit]()
 
 ###### Future Enhancements
 
@@ -152,7 +167,9 @@ All Users:<br>
 
 ### Logic Flow
 
-Given the complexity of this project I spend some time planning the logic required for the application to run efficiently and to give a general idea on how to best approach each stage. To do this I created a flowchart that mapped out each function that allowed me to follow the logic through the application as this was developed. As I worked through the project I would come up with new ideas for the logic flow and features to be included, and so the flowchart changed during the development process. Below shows the comparison for the initial flowchart created, and the final flowchart reflecting the current application.<br>
+Given the complexity of this project I spend some time planning the logic required for the application to run efficiently and to give a general idea on how to best approach each stage. To do this I created a flowchart that mapped out each function that allowed me to follow the logic through the application as this was developed.<br>
+
+As I worked through the project I would come up with new ideas for the logic flow and features to be included, and so the flowchart changed during the development process. Below shows the comparison for the initial flowchart created, and the final flowchart reflecting the current application.<br>
 
 Initial Flowchart:<br>
 ![Initial Flowchart]()<br>
@@ -171,7 +188,8 @@ The main technologies I have utilised within this project include:<br>
 6. Google Sheets- Storage of the data used within this project is contained within a Google Sheets worksheet.
 7. Github- After code has been pushed it has been stored within Github.
 8. ChatGPT 3.5- To assist with debugging I have utilised the [open.AI ChatGPT](https://openai.com/blog/chatgpt) model.
-9. Visual Paradigm- I have used this website to create the flowchart for my project. Click [here](#logic-flow) to view the flowchart.
+9. Visual Paradigm- I have used this website to create the initial flowchart for my project. Click [here](#logic-flow) to view the flowchart.
+10. [Mermaid.Live](https://mermaid.live/)- As the prject developed and became more complicated, I found this website beneficial. With the assistance of ChatGPT I was able to convert my code into mermaid.js syntax, and when pasting this to the above site a flowchart is generated for the logic flow of the project.
 
 #### Libraries
 
