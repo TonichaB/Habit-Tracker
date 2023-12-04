@@ -32,7 +32,7 @@ You can access the live application [here!](https://habit-tracker-tb-f3dc632b7d9
     - [Resources](#resources)
     - [Acknowledgements](#acknowledgements)
 
-<br>
+---
 
 ## Site Goals
 
@@ -62,6 +62,9 @@ There is a worksheet named 'habits_list' that stores the information about the h
 There is a worksheet named 'habit_log' that stores the user habits (username, habit name, and date the habit was logged). Each row within this worksheet represents a instance of a logged habit.
 4. Object-Oriented Design:<br>
 By utilising classes for 'HabitTracker', 'HabitOperations', and 'Functions' I have been able to encapsulate the behaviour relating to the user operations, habits and general functions.
+
+[Back to Contents](#contents)
+---
 
 ### Features
 
@@ -123,7 +126,10 @@ Each time a user provides any form of input to the terminal, their response will
 
 #### Libraries Imported
 
-I have imported a number of libraries within this project to improve the overall functionality and user experience. Details for the specific libraries included are show [here](#libraries).
+I have imported a number of libraries within this project to improve the overall functionality and user experience. Details for the specific libraries included are show [here](#libraries).<br>
+
+[Back to Contents](#contents)
+---
 
 ## User Experience
 
@@ -161,7 +167,10 @@ All Users:<br>
 > *"As a user, I would like the option to delete my account and all
 > stored data associated with my account"*
 >
-> *"As a user, I would like the option to change my password"*
+> *"As a user, I would like the option to change my password"*<br>
+
+[Back to Contents](#contents)
+---
 
 ## Logic Flow
 
@@ -173,7 +182,10 @@ Initial Flowchart:<br>
 ![Initial Flowchart](assets/images/Habit%20Tracker%20Flowchart-%20Initial.webp)<br>
 
 Final Flowchart:<br>
-![Final Flowchart](assets/images/Final-%20Habit%20Tracker.webp)
+![Final Flowchart](assets/images/Final-%20Habit%20Tracker.webp)<br>
+
+[Back to Contents](#contents)
+---
 
 ## Technologies
 
@@ -198,7 +210,10 @@ The following Libraries have been imported for this project:<br>
 4. bcrypt - This library has been used to encrypt the password data provided by a user, offering additional security for the user data.
 5. datetime - This library has been used to allow the program to pull the current date for the user interaction which is used when logging and viewing tracked habits.
 6. re - This library (which stands for regular expressions) has been used when validating usernames and passwords to ensure the user input matches the requirements set out in the validation functions.
-7. time - This library has been used to create a time delay prior to clearing the terminal so the user can see any printed messages applicable for their actions.
+7. time - This library has been used to create a time delay prior to clearing the terminal so the user can see any printed messages applicable for their actions.<br>
+
+[Back to Contents](#contents)
+---
 
 ## Testing
 
@@ -235,7 +250,10 @@ habit_operations.py File:<br>
 operation_functions.py File:<br>
 ![operation_functions.py validation](assets/images/python-linter-operation_functions-pass.webp)<br>
 
-I also chose to test the project using [Python Checker](https://www.pythonchecker.com/) which confirmed each page to be in 'Excellent' condition. The only notes given were in relation to indentations which are confirmed to be correct in the Python Linter above. For this reason I have not made any of these suggested changes.
+I also chose to test the project using [Python Checker](https://www.pythonchecker.com/) which confirmed each page to be in 'Excellent' condition. The only notes given were in relation to indentations which are confirmed to be correct in the Python Linter above. For this reason I have not made any of these suggested changes.<br>
+
+[Back to Contents](#contents)
+---
 
 ## Bugs
 
@@ -277,7 +295,10 @@ Logging Habits Fix- Worksheet View:<br>
 6. Deleted Account- Removing All Stored Habits.<br>
 When testing the function to delete an account, I noticed that not all of the saved habits associated with the user's username were being deleted. To resolve this issue, I amended the function to first filter out the entries relating to other users, then deleting all remaining data (which would only relate to the current user). Once deleted I could then add the filtered entries back into the worksheet, and now all relevant data is removed when calling this function.<br>
 Delete Account Bug:<br>
-![Delete Account Bug](assets/images/delete-user-bug.webp)
+![Delete Account Bug](assets/images/delete-user-bug.webp)<br>
+
+[Back to Contents](#contents)
+---
 
 ## Deployment
 
@@ -341,7 +362,10 @@ Once the above has been updated, select *Add*
 6. Now that we have set up the variables, and added our buildpacks we can start the process of deploying the project. Go back to the top of the page and select the *Deploy* tab. Go to the *Deployment Method* section and select *GitHub*, where you can then select to *Connect to GitHub*. You will need to search for the repository name in the repo-name section and select *Connect* once the correct repository has been found. **Go back to [Local Cloning](#local-cloning) if you have not already cloned the GitHub repository.**
 7. We are now ready to deploy, so scroll down the page until you see *Manual Deploys* where you will want to select *Deploy Branch*. This will now start to create the application being deployed- this can take some time so please be patient! When ready you will see an option to *View* which will open the deployed project in a new tab showing the project within a mock terminal.<br>
 
-If you have followed all above steps correctly the project will now be connected and deployed to Heroku.
+If you have followed all above steps correctly the project will now be connected and deployed to Heroku.<br>
+
+[Back to Contents](#contents)
+---
 
 ## Credits
 
@@ -366,4 +390,7 @@ I would like to thank my mentor Luke who has continued to help me with my coding
 
 I also want to thank Sherry_lead on slack who stepped in when I was first starting this project and facing a mental barrier to get started. Working with Sherry helped me to get over the intiial barier as a result of an incompatable keyboard library I was trying to use. Her encouragement and support were instrumental in inspiring me to get started with this project.<br>
 
-Lastly I would like to thank the Slack community as a whole with Code Institute, who are always ready to offer a helping hand or words of encouragement whilst on this learning journey.
+Lastly I would like to thank the Slack community as a whole with Code Institute, who are always ready to offer a helping hand or words of encouragement whilst on this learning journey.<br>
+
+[Back to Contents](#contents)
+---
